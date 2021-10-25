@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 //   functionDemo();
 // }
 
-void main() => functionDemo();
+void main() => closureDemo();
 
 /**
  * Dart中的方法
@@ -20,24 +20,64 @@ void main() => functionDemo();
  * 返回值和参数类型可以省略
  * 当方法的执行语句只有一句的时候，可以使用箭头函数 => 表达式
  * 定义可选参数必须带上形参的名字和类型
+ * 匿名方法：没有方法名的方法
+ * 闭包：closure
+ * 定义在函数里面的函数，闭包也是一个对象
+ * 可以访问外部函数的局部变量
  */
+
+void closureDemo() {
+  var func = funA();
+  func();
+  func();
+  func();
+  func();
+  func();
+
+  var func2 = funA();
+  func2();
+  func2();
+  func2();
+}
+
+funA() {
+  int count = 0;
+  return () =>print(count++);//这个匿名函数就是一个闭包
+}
+
 void functionDemo() {
   // print(sum(1, 20));
   // print(sum1(1,c: 9,b: 109));
   // print(sum2(1,3,9));
 
   var list = [1,2,3,4];
-  list.forEach(printElement);
+  // forEachDemo(list,printElement);
+
+  int b = 0;
+  forEachDemo(list,(var a) {
+    b++;
+    print("元素$b = $a");
+  });
+
+  var func = (){
+    print("匿名方法");
+  };
+
+  func();
+
+  //立即执行方法，函数
+  ((){
+    print("立即执行方法");
+  })();
 
   var hello = printHello;
 }
 
-forEachDemo(List list, void func(var e)) {
+forEachDemo(List list, void func(var element)) {
   for(var e in list) func(e);
 }
 
 int b = 0;
-
 printElement(var a) {
   b++;
   print("元素$b = $a");
