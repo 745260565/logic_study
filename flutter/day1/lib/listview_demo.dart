@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:io' as H;
 
 import 'model/car.dart';
 
@@ -35,15 +36,10 @@ class ListViewDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text("FlutterDemo"),
-
-      ),
       body: ListView.builder(
           itemBuilder: _itemForRow,
           itemCount: datas.length
       ),
     );
   }
-
 }
