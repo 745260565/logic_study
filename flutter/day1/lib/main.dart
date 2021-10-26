@@ -1,8 +1,5 @@
-import 'package:day1/base_widget.dart';
-import 'package:day1/layout_demo.dart';
 import 'package:day1/listview_demo.dart';
 import 'package:flutter/material.dart';
-import 'model/car.dart';
 
 void main() => runApp(App());
 
