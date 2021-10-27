@@ -47,3 +47,64 @@ class LayoutDemo extends StatelessWidget{
   }
 
 }
+
+class LayoutDemo2 extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.yellow,
+      height: 300,
+      width: 300,
+      alignment: Alignment(0,0),
+      child: Container(
+        color: Colors.blue,
+        height: 200,
+        width: 200,
+        child: AspectRatio(
+          aspectRatio: 1/1,
+          child: Container(
+            height: 30,
+            width: 30,
+            color: Colors.red,
+          ),
+        ),
+      ),
+    );
+  }
+
+}
+
+class StackDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.yellow,
+      alignment: const Alignment(0, 0),
+      child: Stack(
+        children: [
+          Positioned(child: Container(
+            color: Colors.redAccent,
+            width: 300,
+            height: 300,
+            child: Icon(Icons.add),
+          ),
+          ),
+          Positioned(child: Container(
+            color: Colors.blue,
+            width: 200,
+            height: 200,
+            child: Icon(Icons.search),
+            margin: EdgeInsets.only(left: 20),
+          ),left: 10,),
+          Positioned(child: Container(
+            color: Colors.green,
+            width: 100,
+            height: 100,
+            child: Icon(Icons.code),
+          ),right: 10,),
+        ],
+      ),
+    );
+  }
+
+}
