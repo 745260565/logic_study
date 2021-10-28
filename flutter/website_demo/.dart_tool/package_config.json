@@ -68,6 +68,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///Users/chenghao/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub%2547/intl-0.17.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///Users/chenghao/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub%2547/matcher-0.12.10",
       "packageUri": "lib/",
@@ -80,8 +86,26 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///Users/chenghao/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub%2547/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///Users/chenghao/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub%2547/path-1.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/chenghao/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub%2547/provider-6.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "shrine_images",
+      "rootUri": "file:///Users/chenghao/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub%2547/shrine_images-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -146,7 +170,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-10-28T01:54:31.778420Z",
+  "generated": "2021-10-28T07:22:41.466191Z",
   "generator": "pub",
   "generatorVersion": "2.14.4"
 }
