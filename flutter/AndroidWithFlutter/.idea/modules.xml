@@ -4,8 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidWithFlutter.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidWithFlutter.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AndroidWithFlutter.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AndroidWithFlutter.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2058567856/AndroidWithFlutter.flutter.iml" filepath="$PROJECT_DIR$/.idea/modules/-2058567856/AndroidWithFlutter.flutter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1639991565/AndroidWithFlutter.flutter_module.iml" filepath="$PROJECT_DIR$/.idea/modules/1639991565/AndroidWithFlutter.flutter_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flutter_module/.android/Flutter/AndroidWithFlutter.flutter.iml" filepath="$PROJECT_DIR$/.idea/modules/flutter_module/.android/Flutter/AndroidWithFlutter.flutter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flutter_module/AndroidWithFlutter.flutter_module.iml" filepath="$PROJECT_DIR$/.idea/modules/flutter_module/AndroidWithFlutter.flutter_module.iml" />
     </modules>
   </component>
 </project>
