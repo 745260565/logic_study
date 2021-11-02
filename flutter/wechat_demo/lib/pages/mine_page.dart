@@ -17,7 +17,6 @@ class _MinePageState extends State<MinePage> {
       child: Container(
         child: Container(
           margin: EdgeInsets.only(top: 100, bottom: 20, left: 20, right: 10),
-          color: Colors.red,
           child: Row(
             children: [
               //头像
@@ -36,7 +35,6 @@ class _MinePageState extends State<MinePage> {
               //右边部分
               Container(
                 width: MediaQuery.of(context).size.width-100,
-                color: Colors.blue,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
