@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wechat_demo/chat_page.dart';
-import 'package:wechat_demo/discover_page.dart';
-import 'package:wechat_demo/friends_page';
-import 'package:wechat_demo/mine_page.dart';
+import 'package:wechat_demo/pages/chat_page.dart';
+import 'package:wechat_demo/pages/discover/discover_page.dart';
+import 'package:wechat_demo/pages/friends_page';
+import 'package:wechat_demo/pages/mine_page.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  int _currentIndex = 2;
+  int _currentIndex = 3;
 
   List<Widget> _pages = [ChatPage(),FriendsPage(),DiscoverPage(),MinePage()];
 
