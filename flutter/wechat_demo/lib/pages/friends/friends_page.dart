@@ -69,7 +69,13 @@ class FriendsPage extends StatefulWidget {
 }
 
 class _FriendsPageState extends State<FriendsPage> {
-
+  final double _cellHeight = 54.5;
+  final double _groupHeight = 30.0;
+  //字典，里面放item和高度对应的数据
+  final Map _groupOffsetMap = {
+    INDEX_WORDS[0]:0.0,
+    INDEX_WORDS[1]:0.0,
+  };
 
   final List<Friends> _headerData = [
     Friends(imageAssets: 'images/新的朋友.png', name: '新的朋友'),
@@ -80,8 +86,12 @@ class _FriendsPageState extends State<FriendsPage> {
 
   final List<Friends> _listDatas = [];
 
+  ScrollController? _scrollController;
+
   @override
   void initState() {
+
+
     // TODO: implement initState
     super.initState();
     //创建数据
@@ -92,7 +102,14 @@ class _FriendsPageState extends State<FriendsPage> {
     _listDatas.sort((Friends a,Friends b){
       return a.indexLetter!.compareTo(b.indexLetter!);
     });
-    
+    var _groupOffset = _cellHeight*_headerData.length;
+    //经过循环计算，将每一个头的位置算出来，放入字典
+    for(int i = 0;i<_listDatas.length;i++) {
+      if(i<1) {//第一个cell一定有头
+        // _groupOffsetMap.addAll({_listDatas[i].indexLetter,_groupOffset});
+        _groupOffset += _cellHeight+30;
+      }
+    }
 
   }
 
@@ -133,9 +150,16 @@ class _FriendsPageState extends State<FriendsPage> {
         children: [
           Container(
             color: WeChatThemeColor,
-            child: ListView.builder(itemBuilder: _itemForRow,itemCount: _listDatas.length+_headerData.length,),
+            child: ListView.builder(itemBuilder: _itemForRow,controller: _scrollController,itemCount: _listDatas.length+_headerData.length,),
           ),//列表
-          IndexBar(),
+          IndexBar(indexBarCallBack: (String str){
+            print('选中${str}');
+            // if(_groupOffsetMap[str] != null) {
+            //   _scrollController!.animateTo(_groupOffsetMap[str], duration: Duration(microseconds: 100), curve: Curves.easeIn);
+            // } else {
+            //   _scrollController!.animateTo(250, duration: Duration(microseconds: 100), curve: Curves.easeIn);
+            // }
+          },),
         ],
       ),
     );

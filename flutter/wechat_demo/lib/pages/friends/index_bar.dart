@@ -4,11 +4,14 @@ import '../../const.dart';
 
 class IndexBar extends StatefulWidget {
 
+  final void Function(String str)? indexBarCallBack;
+  IndexBar({this.indexBarCallBack});
+
   @override
   _IndexBarState createState() => _IndexBarState();
 }
 
-String getIndex(BuildContext context,Offset globalPosition) {
+int getIndex(BuildContext context,Offset globalPosition) {
   //拿到当前小部件的盒子
   RenderBox box = context.findRenderObject() as RenderBox;
   // print(box.globalToLocal(details.globalPosition));
@@ -18,15 +21,17 @@ String getIndex(BuildContext context,Offset globalPosition) {
   var itemHeight = screenHeight(context)/2/INDEX_WORDS.length;
   //算出第几个item
   int index = (y ~/ itemHeight).clamp(0, INDEX_WORDS.length-1);//clamp设置范围
-  print('现在选中了${INDEX_WORDS[index]}');
-  return INDEX_WORDS[index];
+  // print('现在选中了${INDEX_WORDS[index]}');
+  return index;
 }
 
 class _IndexBarState extends State<IndexBar> {
 
   Color _bkColor = Color.fromRGBO(1, 1, 1, 0.0);
   Color _textColor = Colors.black;
-
+  double _indicatorY = 0.0;
+  String _indicatorText = 'A';
+  bool _indicatorHidden = false;
 
 
   @override
@@ -50,29 +55,55 @@ class _IndexBarState extends State<IndexBar> {
         right: 0.0,
         top: screenHeight(context)/8,
         height: screenHeight(context)/2,
-        width: 30,
-        child: GestureDetector(
-          onVerticalDragUpdate: (DragUpdateDetails details) {
-            getIndex(context, details.globalPosition);
-          },
-          onVerticalDragDown: (DragDownDetails details){
-            setState(() {
-              _bkColor = Color.fromRGBO(1, 1, 1, 0.5);
-              _textColor = Colors.white;
-            });
-          },
-          onVerticalDragEnd: (DragEndDetails details) {
-            setState(() {
-              _bkColor = Color.fromRGBO(1, 1, 1, 0.0);
-              _textColor = Colors.black;
-            });
-          },
-          child: Container(
-            color: _bkColor,
-            child: Column(
-              children: words,
+        width: 120,
+        child: Row(
+          children: [
+            Container(
+              alignment: Alignment(0,-1.1),
+              width: 100,
+              color: Colors.red,
+              child: Stack(
+                alignment: Alignment(-0.2,0),
+                children: [
+                  Image(image: AssetImage('images/气泡.png'),width: 60,),
+                  Text(
+                    'A',
+                    style: TextStyle(fontSize: 35,color: Colors.white),
+                  ),
+                ],
+              ),
             ),
-          ),
+            GestureDetector(
+              onVerticalDragUpdate: (DragUpdateDetails details) {
+                getIndex(context, details.globalPosition);
+                int index = getIndex(context, details.globalPosition);
+                widget.indexBarCallBack!(INDEX_WORDS[index]);
+                _indicatorY = 2.2/INDEX_WORDS.length*index-1.1;
+                _indicatorText = INDEX_WORDS[index];
+                _indicatorHidden = false;
+              },
+              onVerticalDragDown: (DragDownDetails details){
+                widget.indexBarCallBack!(INDEX_WORDS[getIndex(context, details.globalPosition)]);
+                setState(() {
+                  _bkColor = Color.fromRGBO(1, 1, 1, 0.5);
+                  _textColor = Colors.white;
+                });
+              },
+              onVerticalDragEnd: (DragEndDetails details) {
+                setState(() {
+                  _bkColor = Color.fromRGBO(1, 1, 1, 0.0);
+                  _textColor = Colors.black;
+                });
+              },
+              child: Container(
+                color: _bkColor,
+                width: 20,
+                child: Column(
+                  children: words,
+                ),
+              ),
+            )
+          ],
         )
     );//悬浮的索引条;
   }
