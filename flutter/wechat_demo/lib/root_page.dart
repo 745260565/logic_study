@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wechat_demo/pages/chat_page.dart';
 import 'package:wechat_demo/pages/discover/discover_page.dart';
-import 'package:wechat_demo/pages/friends_page';
+import 'package:wechat_demo/pages/friends/friends_page.dart';
 import 'package:wechat_demo/pages/mine_page.dart';
 
 class RootPage extends StatefulWidget {
@@ -12,7 +12,7 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  int _currentIndex = 3;
+  int _currentIndex = 1;
 
   List<Widget> _pages = [ChatPage(),FriendsPage(),DiscoverPage(),MinePage()];
 

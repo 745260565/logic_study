@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wechat_demo/const.dart';
 
 import 'discover/discover_cell.dart';
 
@@ -33,26 +34,37 @@ class _MinePageState extends State<MinePage> {
                 ),
               ),
               //右边部分
-              Container(
-                width: MediaQuery.of(context).size.width-100,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(top: 10),
-                          child: Text('程浩',),
-                        ),
-                        Container(
-                          child: Text('chenghao'),
-                        ),
-                      ],
-                    ),
-                    Image.asset("images/icon_right.png",width: 15,),
+              Expanded(child: Container(
+                padding: EdgeInsets.only(left: 10,right: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      height: 35,
+                      child: Text(
+                        'Cheng',
+                        style: TextStyle(fontSize: 25,color: Colors.black),
+                      ),
+                    ),//昵称
+                    Container(
+                      height: 25,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            "微信号：sdkjlx",
+                            style: TextStyle(fontSize: 17,color: Colors.grey),
+                          ),
+                          Image(
+                            image: AssetImage('images/icon_right.png'),
+                            width: 15,
+                          ),
+                        ],
+                      ),
+                    ),//微信号加箭头
                   ],
                 ),
-              ),
+              )),
             ],
           ),
         ),
@@ -65,7 +77,7 @@ class _MinePageState extends State<MinePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color.fromRGBO(220, 220, 220, 1),
+        color: WeChatThemeColor,
         child: Stack(
           children: [
             //列表
