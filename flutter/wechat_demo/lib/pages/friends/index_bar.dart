@@ -59,15 +59,14 @@ class _IndexBarState extends State<IndexBar> {
         child: Row(
           children: [
             Container(
-              alignment: Alignment(0,-1.1),
+              alignment: Alignment(0,_indicatorY),
               width: 100,
-              color: Colors.red,
-              child: Stack(
+              child: _indicatorHidden ? null: Stack(
                 alignment: Alignment(-0.2,0),
                 children: [
                   Image(image: AssetImage('images/气泡.png'),width: 60,),
                   Text(
-                    'A',
+                    _indicatorText,
                     style: TextStyle(fontSize: 35,color: Colors.white),
                   ),
                 ],
@@ -78,21 +77,28 @@ class _IndexBarState extends State<IndexBar> {
                 getIndex(context, details.globalPosition);
                 int index = getIndex(context, details.globalPosition);
                 widget.indexBarCallBack!(INDEX_WORDS[index]);
-                _indicatorY = 2.2/INDEX_WORDS.length*index-1.1;
-                _indicatorText = INDEX_WORDS[index];
-                _indicatorHidden = false;
+                setState(() {
+                  _indicatorY = 2.2/INDEX_WORDS.length*index-1.1;
+                  _indicatorText = INDEX_WORDS[index];
+                  _indicatorHidden = false;
+                });
               },
               onVerticalDragDown: (DragDownDetails details){
-                widget.indexBarCallBack!(INDEX_WORDS[getIndex(context, details.globalPosition)]);
+                int index = getIndex(context, details.globalPosition);
+                widget.indexBarCallBack!(INDEX_WORDS[index]);
                 setState(() {
                   _bkColor = Color.fromRGBO(1, 1, 1, 0.5);
                   _textColor = Colors.white;
+                  _indicatorY = 2.2/INDEX_WORDS.length*index-1.1;
+                  _indicatorText = INDEX_WORDS[index];
+                  _indicatorHidden = false;
                 });
               },
               onVerticalDragEnd: (DragEndDetails details) {
                 setState(() {
                   _bkColor = Color.fromRGBO(1, 1, 1, 0.0);
                   _textColor = Colors.black;
+                  _indicatorHidden = true;
                 });
               },
               child: Container(

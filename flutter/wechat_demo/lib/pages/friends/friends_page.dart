@@ -74,7 +74,7 @@ class _FriendsPageState extends State<FriendsPage> {
   //字典，里面放item和高度对应的数据
   final Map _groupOffsetMap = {
     INDEX_WORDS[0]:0.0,
-    INDEX_WORDS[1]:0.0,
+    INDEX_WORDS[1]:0.0,//前两个🔍和🌟值为0.0
   };
 
   final List<Friends> _headerData = [
@@ -90,7 +90,7 @@ class _FriendsPageState extends State<FriendsPage> {
 
   @override
   void initState() {
-
+    _scrollController = ScrollController();
 
     // TODO: implement initState
     super.initState();
@@ -106,8 +106,15 @@ class _FriendsPageState extends State<FriendsPage> {
     //经过循环计算，将每一个头的位置算出来，放入字典
     for(int i = 0;i<_listDatas.length;i++) {
       if(i<1) {//第一个cell一定有头
-        // _groupOffsetMap.addAll({_listDatas[i].indexLetter,_groupOffset});
-        _groupOffset += _cellHeight+30;
+        _groupOffsetMap.addAll({_listDatas[i].indexLetter:_groupOffset});//Map里加入 "A":高度
+        //保存完了再加_groupHeight
+        _groupOffset += _cellHeight+_groupHeight;
+      } else if(_listDatas[i].indexLetter == _listDatas[i-1].indexLetter) {
+        //不用存，只需加Cell高度
+        _groupOffset += _cellHeight;
+      } else {
+        _groupOffsetMap.addAll({_listDatas[i].indexLetter:_groupOffset});
+        _groupOffset += _cellHeight+_groupHeight;
       }
     }
 
@@ -154,11 +161,9 @@ class _FriendsPageState extends State<FriendsPage> {
           ),//列表
           IndexBar(indexBarCallBack: (String str){
             print('选中${str}');
-            // if(_groupOffsetMap[str] != null) {
-            //   _scrollController!.animateTo(_groupOffsetMap[str], duration: Duration(microseconds: 100), curve: Curves.easeIn);
-            // } else {
-            //   _scrollController!.animateTo(250, duration: Duration(microseconds: 100), curve: Curves.easeIn);
-            // }
+            if(_groupOffsetMap[str] != null) {
+              _scrollController!.animateTo(_groupOffsetMap[str], duration: Duration(microseconds: 100), curve: Curves.easeIn);
+            }
           },),
         ],
       ),
