@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:wechat_demo/const.dart';
 import 'package:wechat_demo/pages/discover/discover_child_page.dart';
@@ -68,7 +69,7 @@ class FriendsPage extends StatefulWidget {
   _FriendsPageState createState() => _FriendsPageState();
 }
 
-class _FriendsPageState extends State<FriendsPage> {
+class _FriendsPageState extends State<FriendsPage> with AutomaticKeepAliveClientMixin{
   final double _cellHeight = 54.5;
   final double _groupHeight = 30.0;
   //字典，里面放item和高度对应的数据
@@ -169,4 +170,8 @@ class _FriendsPageState extends State<FriendsPage> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

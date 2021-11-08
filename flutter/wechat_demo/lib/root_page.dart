@@ -15,17 +15,28 @@ class _RootPageState extends State<RootPage> {
   int _currentIndex = 0;
 
   List<Widget> _pages = [ChatPage(),FriendsPage(),DiscoverPage(),MinePage()];
+  final PageController _controller = PageController();
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        body: _pages[_currentIndex],
+        body: PageView(
+          controller: _controller,
+          children: _pages,
+          onPageChanged: (int index) {
+            _currentIndex = index;
+            setState(() {
+
+            });
+          },
+        ),
         bottomNavigationBar: BottomNavigationBar(
           onTap: (index) {
             setState(() {
               _currentIndex = index;
+              _controller.jumpToPage(index);
             });
           },
           type: BottomNavigationBarType.fixed,

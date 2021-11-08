@@ -1,6 +1,25 @@
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:wechat_demo/const.dart';
+
+
+class Chat {
+  final String? name;
+  final String? message;
+  final String? imageUrl;
+  Chat({this.name,this.message,this.imageUrl});
+  //工厂构造
+  factory Chat.formMap(Map map){
+    return Chat(
+      name: map['name'],
+      message: map['message'],
+      imageUrl: map['imageUrl'],
+    );
+  }
+}
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -9,7 +28,10 @@ class ChatPage extends StatefulWidget {
   _ChatPageState createState() => _ChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
+
+  //模型数组
+  List<Chat> _datas = [];
 
   Widget _buildPopupMenuItem(String imgAss, String title) {
     return Row(
@@ -31,14 +53,48 @@ class _ChatPageState extends State<ChatPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getDatas();
+    // final a = getDatas();
+    // a.then((value) => null);
+    //获取网络数据
+    getDatas()
+        .then((List<Chat> datas){
+          setState(() {
+            _datas = datas;
+          });
+        });
   }
 
-  getDatas() async{
+  Future<List<Chat>> getDatas() async{
     final url = Uri.parse("http://rap2api.taobao.org/app/mock/293340/api/chat/list");
     final response = await http.get(url);
-    print(response.statusCode);
-    print(response.body);
+    if(response.statusCode == 200) {
+      // print(response.body);
+      //获取响应数据，转成Map类型
+      final responsBody = json.decode(response.body);
+      List<Chat> chatList = responsBody['chat_list'].map<Chat>((item) => Chat.formMap(item)).toList();//后续重点理解
+      print(chatList);
+      return chatList;
+    } else {
+      throw Exception('statusCode: ${response.statusCode}');
+    }
+
+
+
+
+    //json转 Map
+    // final chat = {
+    //   'name':'A',
+    //   'message':'B',
+    // };
+    // final chatJson = json.encode(chat);
+    // print(chatJson);
+    //
+    // final newChat = json.decode(chatJson);
+    // print(newChat);
+    // print(newChat is Map);
+    //
+    // final chatModel = Chat.formMap(newChat);
+    // print('name:${chatModel.name} message:${chatModel.message} ');
   }
 
   @override
@@ -73,10 +129,40 @@ class _ChatPageState extends State<ChatPage> {
         ],
       ),
       body: Container(
-        child: ListView.builder(itemBuilder: (BuildContext,int index) {
-          return Text('hello');
-        },itemCount: 10,),
+        child: FutureBuilder(
+          future: getDatas(),
+          builder: (BuildContext context,AsyncSnapshot snapshot) {
+            print("data:${snapshot.data}");
+            print("data:${snapshot.connectionState}");
+            if(snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: Text('Loading'),);
+            }
+            return ListView(
+              children: snapshot.data.map<Widget>((Chat item){
+                return ListTile(
+                  title: Text(item.name!,),
+                  subtitle: Container(
+                    height: 20,
+                    child: Text(item.message!,overflow: TextOverflow.ellipsis,),
+                  ),
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(item.imageUrl!),
+                  ),
+                );
+              }).toList(),
+            );
+          },
+        ),
+        // child: ListView.builder(itemBuilder: (BuildContext,int index) {
+        //   return Text('hello');
+        // },itemCount: 10,),
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
+
+
 }
