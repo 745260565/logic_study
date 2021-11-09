@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:wechat_demo/root_page.dart';
 
-// void main() {
-//   runApp(const App());
-// }
+void main() {
+  runApp(const App());
+  // runFuture();
+}
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -23,9 +24,11 @@ class App extends StatelessWidget {
   }
 }
 
+
+
 String _data = '0';
 
-void main() {
+runFuture() {
   getData();
   print("做其它事件");
 }

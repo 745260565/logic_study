@@ -30,6 +30,8 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
 
+  bool _cancelConnect = false;
+
   //模型数组
   List<Chat> _datas = [];
 
@@ -56,15 +58,26 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
     // final a = getDatas();
     // a.then((value) => null);
     //获取网络数据
-    getDatas()
-        .then((List<Chat> datas){
-          setState(() {
-            _datas = datas;
-          });
+    getDatas().then((List<Chat> datas){
+      if(!_cancelConnect) {
+        setState(() {
+          _datas = datas;
         });
+      }
+    }).catchError((e){
+          print(e);
+    }).whenComplete(() {
+      print('完毕');
+    }).timeout(Duration(milliseconds: 1000)).catchError((timeout) {
+      print('超时了');
+      _cancelConnect = true;
+    });
   }
 
   Future<List<Chat>> getDatas() async{
+    setState(() {
+      _cancelConnect = false;
+    });
     final url = Uri.parse("http://rap2api.taobao.org/app/mock/293340/api/chat/list");
     final response = await http.get(url);
     if(response.statusCode == 200) {
@@ -77,9 +90,6 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
     } else {
       throw Exception('statusCode: ${response.statusCode}');
     }
-
-
-
 
     //json转 Map
     // final chat = {
@@ -129,30 +139,65 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
         ],
       ),
       body: Container(
-        child: FutureBuilder(
-          future: getDatas(),
-          builder: (BuildContext context,AsyncSnapshot snapshot) {
-            print("data:${snapshot.data}");
-            print("data:${snapshot.connectionState}");
-            if(snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: Text('Loading'),);
-            }
-            return ListView(
-              children: snapshot.data.map<Widget>((Chat item){
+        child: Container(
+          child: _datas.length == 0? Center(child: Text("Loading...."),):
+          ListView.builder(
+            itemCount: _datas.length,
+              itemBuilder: (BuildContext context,int index){
                 return ListTile(
-                  title: Text(item.name!,),
+                  title: Text(_datas[index].name!),
                   subtitle: Container(
-                    height: 20,
-                    child: Text(item.message!,overflow: TextOverflow.ellipsis,),
+                    child: Text(_datas[index].message!,overflow: TextOverflow.ellipsis,),
                   ),
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(item.imageUrl!),
+                  leading: Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6.0),
+                      image: DecorationImage(
+                        image: NetworkImage(_datas[index].imageUrl!),
+                      ),
+                    ),
                   ),
                 );
-              }).toList(),
-            );
-          },
+              }),
         ),
+        // child: FutureBuilder(
+        //   future: getDatas(),
+        //   builder: (BuildContext context,AsyncSnapshot snapshot) {
+        //     print("data:${snapshot.data}");
+        //     print("data:${snapshot.connectionState}");
+        //     if(snapshot.connectionState == ConnectionState.waiting) {
+        //       return Center(child: Text('Loading'),);
+        //     }
+        //     return ListView(
+        //       children: snapshot.data.map<Widget>((Chat item){
+        //         return ListTile(
+        //           title: Text(item.name!,),
+        //           subtitle: Container(
+        //             alignment: Alignment.bottomCenter,
+        //             padding: EdgeInsets.only(right: 10),
+        //             height: 25,
+        //             child: Text(item.message!,overflow: TextOverflow.ellipsis,),
+        //           ),
+        //           leading: Container(
+        //             width: 44,
+        //             height: 44,
+        //             decoration: BoxDecoration(
+        //               borderRadius: BorderRadius.circular(6.0),
+        //               image: DecorationImage(
+        //                   image: NetworkImage(item.imageUrl!)
+        //               ),
+        //             ),
+        //           ),
+        //           // CircleAvatar(
+        //           //   backgroundImage: NetworkImage(item.imageUrl!),
+        //           // ),
+        //         );
+        //       }).toList(),
+        //     );
+        //   },
+        // ),
         // child: ListView.builder(itemBuilder: (BuildContext,int index) {
         //   return Text('hello');
         // },itemCount: 10,),
