@@ -1,9 +1,12 @@
+import 'dart:async';
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:wechat_demo/const.dart';
+import 'package:wechat_demo/tools/http_manager.dart';
+
+import 'chat/search_cell.dart';
 
 
 class Chat {
@@ -55,6 +58,17 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    // int _count = 0;
+    // Timer.periodic(Duration(seconds: 1), (timer) {
+    //   _count++;
+    //   print(_count);
+    //   if(_count == 99) {
+    //
+    //   }
+    // });
+
+
     // final a = getDatas();
     // a.then((value) => null);
     //获取网络数据
@@ -78,12 +92,13 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
     setState(() {
       _cancelConnect = false;
     });
-    final url = Uri.parse("http://rap2api.taobao.org/app/mock/293340/api/chat/list");
-    final response = await http.get(url);
+    // final url = Uri.parse("http://rap2api.taobao.org/app/mock/293340/api/chat/list");
+    String url = "http://rap2api.taobao.org/app/mock/293340/api/chat/list";
+    final response = await HttpManager.get(url);
     if(response.statusCode == 200) {
       // print(response.body);
       //获取响应数据，转成Map类型
-      final responsBody = json.decode(response.body);
+      final responsBody = json.decode(response.data);
       List<Chat> chatList = responsBody['chat_list'].map<Chat>((item) => Chat.formMap(item)).toList();//后续重点理解
       print(chatList);
       return chatList;
@@ -105,6 +120,29 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
     //
     // final chatModel = Chat.formMap(newChat);
     // print('name:${chatModel.name} message:${chatModel.message} ');
+  }
+
+  Widget itmeBuildForRow(BuildContext context,int index){
+    if(index == 0) {
+      return SearchCell();
+    }
+    index--;
+    return ListTile(
+                title: Text(_datas[index].name!),
+                subtitle: Container(
+                  child: Text(_datas[index].message!,overflow: TextOverflow.ellipsis,),
+                ),
+                leading: Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(6.0),
+                    image: DecorationImage(
+                      image: NetworkImage(_datas[index].imageUrl!),
+                    ),
+                  ),
+                ),
+              );
   }
 
   @override
@@ -135,32 +173,24 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
               ),
             ),
           ),
-
+          GestureDetector(
+            onTap: (){
+              print('开始');
+              // for(int i = 0;i<100000000000;i++) {}
+              print('结束');
+            },
+            child: Container(
+              child: Icon(Icons.add),
+            ),
+          ),
         ],
       ),
       body: Container(
         child: Container(
           child: _datas.length == 0? Center(child: Text("Loading...."),):
           ListView.builder(
-            itemCount: _datas.length,
-              itemBuilder: (BuildContext context,int index){
-                return ListTile(
-                  title: Text(_datas[index].name!),
-                  subtitle: Container(
-                    child: Text(_datas[index].message!,overflow: TextOverflow.ellipsis,),
-                  ),
-                  leading: Container(
-                    width: 44,
-                    height: 44,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6.0),
-                      image: DecorationImage(
-                        image: NetworkImage(_datas[index].imageUrl!),
-                      ),
-                    ),
-                  ),
-                );
-              }),
+            itemCount: _datas.length+1,
+              itemBuilder: itmeBuildForRow),
         ),
         // child: FutureBuilder(
         //   future: getDatas(),

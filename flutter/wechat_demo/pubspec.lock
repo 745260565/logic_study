@@ -56,7 +56,7 @@ packages:
       name: dio
       url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
     source: hosted
-    version: "4.0.1"
+    version: "4.0.3"
   fake_async:
     dependency: transitive
     description:

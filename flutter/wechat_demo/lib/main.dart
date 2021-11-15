@@ -5,16 +5,46 @@ import 'dart:isolate';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:wechat_demo/root_page.dart';
+import 'package:dio/dio.dart';
 
 
 void main() {
-  // runApp(const App());
+  runApp(const App());
   // runFuture();
   // testFuture4();
-  IsolateDemo();
+  // isoLofuncmo();
+
+  // Future x = Future((){
+  //   print('异步任务1');
+  //   scheduleMicrotask((){
+  //     print('微任务');
+  //   });
+  // });
+  // x.then((value){
+  //   print('微任务2');
+  // });
+}
+
+void dioDemo() {
+  //发送网络请求
+  final dio = Dio();
+  //
+  var downloadUrl = '';
 }
 
 String _data = '0';
+
+void isoLofuncmo() {
+  Future(() =>compute(funcs,123)).then((value) => print('1结束'));
+  Future(() =>compute(funcs,123)).then((value) => print('2结束'));
+  Future(() =>compute(funcs,123)).then((value) => print('3结束'));
+  Future(() =>compute(funcs,123)).then((value) => print('4结束'));
+  Future(() =>compute(funcs,123)).then((value) => print('5结束'));
+  Future(() =>compute(funcs,123)).then((value) => print('6结束'));
+
+}
+
+funcs(int message) {}
 
 runFuture() {
   getData();
