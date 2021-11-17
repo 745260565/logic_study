@@ -101,7 +101,7 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
           print(e);
     }).whenComplete(() {
       print('完毕');
-    }).timeout(Duration(milliseconds: 1000)).catchError((timeout) {
+    }).timeout(Duration(seconds: 100)).catchError((timeout) {
       print('超时了');
       _cancelConnect = true;
     });
@@ -142,10 +142,10 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
   }
 
   Widget itmeBuildForRow(BuildContext context,int index){
-    // if(index == 0) {
-    //   return SearchCell();
-    // }
-    // index--;
+    if(index == 0) {
+      return SearchCell();
+    }
+    index--;
     return ListTile(
                 title: Text(_datas[index].name!),
                 subtitle: Container(
@@ -208,7 +208,7 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
         child: Container(
           child: _datas.length == 0? Center(child: Text("Loading...."),):
           ListView.builder(
-            itemCount: _datas.length,
+            itemCount: _datas.length+1,
               itemBuilder: itmeBuildForRow),
         ),
         // child: FutureBuilder(

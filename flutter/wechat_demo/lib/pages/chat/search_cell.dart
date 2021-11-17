@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:wechat_demo/const.dart';
+import 'package:wechat_demo/pages/chat/search_page.dart';
 
 class SearchCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: (){
+        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SearchPage()));
+        print('点击了搜索框！');
+      },
       child: Container(
-        height: 45,
+        height: 44,
         padding: EdgeInsets.all(5),
         color: WeChatThemeColor,
         child: Stack(
+          alignment: Alignment.center,
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Colors.red,borderRadius: BorderRadius.circular(6),
+                color: Colors.white,borderRadius: BorderRadius.circular(6),
               ),
-              color: Colors.white,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image(
-                    image: AssetImage('image/放大镜b.png'),
+                    image: AssetImage('images/放大镜b.png'),
                   width: 15,
                   color: Colors.grey,
                 ),
