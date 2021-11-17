@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:wechat_demo/const.dart';
@@ -8,6 +9,12 @@ import 'package:wechat_demo/tools/http_manager.dart';
 
 import 'chat/search_cell.dart';
 
+
+func(message) {
+  print('开始');
+  for(int i = 0;i<100000000000;i++) {}
+  print('结束');
+}
 
 class Chat {
   final String? name;
@@ -33,6 +40,8 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
 
+  late Timer _timer;
+
   bool _cancelConnect = false;
 
   //模型数组
@@ -55,18 +64,28 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    print('chatPage销毁了');
+    if(_timer != null && _timer.isActive) {
+      _timer.cancel();
+    }
+    super.dispose();
+  }
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    // int _count = 0;
-    // Timer.periodic(Duration(seconds: 1), (timer) {
-    //   _count++;
-    //   print(_count);
-    //   if(_count == 99) {
-    //
-    //   }
-    // });
+    int _count = 0;
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      _count++;
+      print(_count);
+      if(_count == 99) {
+        timer.cancel();
+      }
+    });
 
 
     // final a = getDatas();
@@ -98,8 +117,8 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
     if(response.statusCode == 200) {
       // print(response.body);
       //获取响应数据，转成Map类型
-      final responsBody = json.decode(response.data);
-      List<Chat> chatList = responsBody['chat_list'].map<Chat>((item) => Chat.formMap(item)).toList();//后续重点理解
+      // final responsBody = json.decode(response.data);
+      List<Chat> chatList = response.data['chat_list'].map<Chat>((item) => Chat.formMap(item)).toList();//后续重点理解
       print(chatList);
       return chatList;
     } else {
@@ -123,10 +142,10 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
   }
 
   Widget itmeBuildForRow(BuildContext context,int index){
-    if(index == 0) {
-      return SearchCell();
-    }
-    index--;
+    // if(index == 0) {
+    //   return SearchCell();
+    // }
+    // index--;
     return ListTile(
                 title: Text(_datas[index].name!),
                 subtitle: Container(
@@ -175,9 +194,9 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
           ),
           GestureDetector(
             onTap: (){
-              print('开始');
-              // for(int i = 0;i<100000000000;i++) {}
-              print('结束');
+              Future((){
+                return compute(func,3);
+              });
             },
             child: Container(
               child: Icon(Icons.add),
@@ -189,7 +208,7 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
         child: Container(
           child: _datas.length == 0? Center(child: Text("Loading...."),):
           ListView.builder(
-            itemCount: _datas.length+1,
+            itemCount: _datas.length,
               itemBuilder: itmeBuildForRow),
         ),
         // child: FutureBuilder(

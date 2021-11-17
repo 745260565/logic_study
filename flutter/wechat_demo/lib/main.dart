@@ -34,18 +34,6 @@ void dioDemo() {
 
 String _data = '0';
 
-void isoLofuncmo() {
-  Future(() =>compute(funcs,123)).then((value) => print('1结束'));
-  Future(() =>compute(funcs,123)).then((value) => print('2结束'));
-  Future(() =>compute(funcs,123)).then((value) => print('3结束'));
-  Future(() =>compute(funcs,123)).then((value) => print('4结束'));
-  Future(() =>compute(funcs,123)).then((value) => print('5结束'));
-  Future(() =>compute(funcs,123)).then((value) => print('6结束'));
-
-}
-
-funcs(int message) {}
-
 runFuture() {
   getData();
   print("做其它事件");
