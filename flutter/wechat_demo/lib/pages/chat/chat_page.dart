@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:wechat_demo/const.dart';
 import 'package:wechat_demo/tools/http_manager.dart';
 
-import 'chat/search_cell.dart';
+import 'search_cell.dart';
 
 
 func(message) {
@@ -40,7 +40,7 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
 
-  late Timer _timer;
+  // late Timer _timer;
 
   bool _cancelConnect = false;
 
@@ -63,29 +63,29 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
     );
   }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    print('chatPage销毁了');
-    if(_timer != null && _timer.isActive) {
-      _timer.cancel();
-    }
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   // TODO: implement dispose
+  //   print('chatPage销毁了');
+  //   if(_timer != null && _timer.isActive) {
+  //     _timer.cancel();
+  //   }
+  //   super.dispose();
+  // }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    int _count = 0;
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      _count++;
-      print(_count);
-      if(_count == 99) {
-        timer.cancel();
-      }
-    });
+    // int _count = 0;
+    // _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    //   _count++;
+    //   print(_count);
+    //   if(_count == 99) {
+    //     timer.cancel();
+    //   }
+    // });
 
 
     // final a = getDatas();
@@ -143,7 +143,7 @@ class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
 
   Widget itmeBuildForRow(BuildContext context,int index){
     if(index == 0) {
-      return SearchCell();
+      return SearchCell(datas: _datas,);
     }
     index--;
     return ListTile(
