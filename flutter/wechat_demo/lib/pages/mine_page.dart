@@ -1,5 +1,9 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wechat_demo/const.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'discover/discover_cell.dart';
 
@@ -10,6 +14,20 @@ class MinePage extends StatefulWidget {
 }
 
 class _MinePageState extends State<MinePage> {
+
+  MethodChannel _methodChannel = MethodChannel("/mine_page/method");
+  final String _avatarFile = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // _methodChannel.setMethodCallHandler((call){
+    //   if(call.method == 'imagePath') {
+    //     print(call.arguments);
+    //   }
+    // });
+  }
 
   Widget headerWidget(){
     return Container(
@@ -71,7 +89,6 @@ class _MinePageState extends State<MinePage> {
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -144,20 +161,31 @@ class _MinePageState extends State<MinePage> {
                   ))
             ),
             //相机
-            Container(
-              // color: Colors.red,
-              margin: EdgeInsets.only(top: 40,right: 10),
-              height: 25,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Image(image: AssetImage('images/相机.png'),)
-                ],
+            GestureDetector(
+              onTap: (){
+                _methodChannel.invokeListMethod("picture");
+              },
+              child: Container(
+                // color: Colors.red,
+                margin: EdgeInsets.only(top: 40,right: 10),
+                height: 25,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Image(image: AssetImage('images/相机.png'),)
+                  ],
+                ),
               ),
             )
+
           ],
         ),
       ),
     );
   }
+
+  void _pickImage() async{
+    // XFile file = await ImagePicker().pickImage(source: CanvasImageSource)
+  }
+
 }
