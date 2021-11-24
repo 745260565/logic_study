@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/inherited_demo.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(),
-        body: MyHomePage(title: 'Flutter Demo Home Page'),
+        body: InheritedDemo(),
       ) ,
     );
   }
@@ -59,6 +60,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // TODO: implement dispose
     print("State dispose");
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    print('didChangeDependencies');
+    super.didChangeDependencies();
   }
 
   @override
