@@ -125,12 +125,13 @@ class KeyDemo extends StatefulWidget {
 }
 
 class _KeyDemoState extends State<KeyDemo> {
-  List<Widget> items = [StfulItem("1111"),StfulItem("222"),StfulItem("333")];
+  List<Widget> items = [StfulItem("1111",key: ValueKey(Random().nextInt(100)),),StfulItem("222",key: ValueKey(Random().nextInt(100)),), StfulItem("333",key: ValueKey(Random().nextInt(100)),)];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('keyDemo'),),
       body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: items,
       ),
       floatingActionButton: FloatingActionButton(
@@ -138,7 +139,7 @@ class _KeyDemoState extends State<KeyDemo> {
         onPressed: (){
           setState(() {
             items.removeAt(0);
-            items.add(StfulItem("444"));
+            items.add(StfulItem("444",key: ValueKey(Random().nextInt(100)),));
           });
         },
       ),

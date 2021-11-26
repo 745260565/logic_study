@@ -1,4 +1,5 @@
-import 'dart:html';
+
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,20 +14,23 @@ class MinePage extends StatefulWidget {
   _MinePageState createState() => _MinePageState();
 }
 
-class _MinePageState extends State<MinePage> {
+class _MinePageState extends State<MinePage>{
 
   MethodChannel _methodChannel = MethodChannel("/mine_page/method");
-  final String _avatarFile = "";
+  File? _avatarFile;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    // _methodChannel.setMethodCallHandler((call){
-    //   if(call.method == 'imagePath') {
-    //     print(call.arguments);
-    //   }
-    // });
+    _methodChannel.setMethodCallHandler((call) {
+      if(call.method == 'imagePath') {
+        setState(() {
+          _avatarFile = File(call.arguments.toString().substring(7));
+        });
+      }
+      return Future((){});
+    });
   }
 
   Widget headerWidget(){
@@ -38,16 +42,21 @@ class _MinePageState extends State<MinePage> {
           margin: EdgeInsets.only(top: 100, bottom: 20, left: 20, right: 10),
           child: Row(
             children: [
-              //头像
-              Container(
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(12),
-                  image: DecorationImage(
-                    image: AssetImage('images/Hank.png'),
-                    fit: BoxFit.cover
+              GestureDetector(
+                onTap: (){
+                  // _methodChannel.invokeListMethod("picture");
+                  _pickImage();
+                },
+                  //头像
+                child: Container(
+                  width: 70,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    image: DecorationImage(
+                        image: _avatarFile == null ? const AssetImage('images/Hank.png') : FileImage(_avatarFile!) as ImageProvider,
+                        fit: BoxFit.cover
+                    ),
                   ),
                 ),
               ),
@@ -161,23 +170,17 @@ class _MinePageState extends State<MinePage> {
                   ))
             ),
             //相机
-            GestureDetector(
-              onTap: (){
-                _methodChannel.invokeListMethod("picture");
-              },
-              child: Container(
-                // color: Colors.red,
-                margin: EdgeInsets.only(top: 40,right: 10),
-                height: 25,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Image(image: AssetImage('images/相机.png'),)
-                  ],
-                ),
+            Container(
+              // color: Colors.red,
+              margin: EdgeInsets.only(top: 40,right: 10),
+              height: 25,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Image(image: AssetImage('images/相机.png'),)
+                ],
               ),
-            )
-
+            ),
           ],
         ),
       ),
@@ -185,7 +188,16 @@ class _MinePageState extends State<MinePage> {
   }
 
   void _pickImage() async{
-    // XFile file = await ImagePicker().pickImage(source: CanvasImageSource)
+    try {
+      XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery);
+      _avatarFile = File(file!.path);
+      setState(() {});
+    } catch (e) {
+      print(e.toString());
+      setState(() {
+        _avatarFile = null;
+      });
+    }
   }
 
 }
