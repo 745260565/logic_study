@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:wechat_demo/const.dart';
 import 'package:wechat_demo/pages/discover/discover_child_page.dart';
 import 'package:wechat_demo/pages/friends/friends_data.dart';
-import 'package:wechat_demo/pages/friends/index_bar.dart';
+// import 'package:wechat_demo/pages/friends/index_bar.dart';
+import 'package:ch_package_demo/ch_package_demo.dart' as ch;
 
 class _FriendCell extends StatelessWidget {
 
@@ -74,8 +75,8 @@ class _FriendsPageState extends State<FriendsPage> with AutomaticKeepAliveClient
   final double _groupHeight = 30.0;
   //字典，里面放item和高度对应的数据
   final Map _groupOffsetMap = {
-    INDEX_WORDS[0]:0.0,
-    INDEX_WORDS[1]:0.0,//前两个🔍和🌟值为0.0
+    ch.INDEX_WORDS[0]:0.0,
+    ch.INDEX_WORDS[1]:0.0,//前两个🔍和🌟值为0.0
   };
 
   final List<Friends> _headerData = [
@@ -160,7 +161,7 @@ class _FriendsPageState extends State<FriendsPage> with AutomaticKeepAliveClient
             color: WeChatThemeColor,
             child: ListView.builder(itemBuilder: _itemForRow,controller: _scrollController,itemCount: _listDatas.length+_headerData.length,),
           ),//列表
-          IndexBar(indexBarCallBack: (String str){
+          ch.IndexBar(indexBarCallBack: (String str){
             print('选中${str}');
             if(_groupOffsetMap[str] != null) {
               _scrollController!.animateTo(_groupOffsetMap[str], duration: Duration(microseconds: 100), curve: Curves.easeIn);

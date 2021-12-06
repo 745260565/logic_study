@@ -53,6 +53,7 @@ dev_dependencies:
   # dio: any 任意版本，实时更新
   # dio: >3.0.1 大于3.0.1，但不包含3.0.1
   image_picker: ^0.8.4+4
+  ch_package_demo: ^0.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -68,6 +69,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - images/
+     - .packages
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
