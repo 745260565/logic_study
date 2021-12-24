@@ -1,0 +1,9 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/aliyun/aliyun-specs.git'
+
+platform :ios, '11.0'
+
+target 'offerDemo' do
+  pod 'SDWebImage', :modular_headers => true
+  pod 'AFNetworking', '~> 4.0.1'
+end
