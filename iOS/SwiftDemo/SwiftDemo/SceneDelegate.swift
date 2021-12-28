@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let esTabBarController = setupTabbar(delegate: self as? UITabBarControllerDelegate)
         window = UIWindow(windowScene: windowScene)
-        window?.backgroundColor = UIColor.white
+        window?.backgroundColor = UIColor.systemBackground
         window?.rootViewController = esTabBarController
 //        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
@@ -98,7 +98,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         esTabBarController.tabBar.shadowImage = UIImage(named: "transparent")
         esTabBarController.shouldHijackHandler = {
             tabbarController, viewController, index in
-            if index == 2 || index == 3 {
+            if index == 2 {
                 return true
             }
             return false
@@ -122,25 +122,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let kHomePageVC = KHomeViewController()
         let kListenVC = KListenViewController()
         let kPlayVC = KPlayViewController()
-        let kFindVC = KFindViewController()
+//        let kFindVC = KFindViewController()
+        let kSwiftVC = KSwiftViewController()
         let kMineVC = KMineViewController()
         
         kHomePageVC.tabBarItem = ESTabBarItem.init(KIrregularityTabBarItemContentView(), title: "首页", image: UIImage(named: "home"), selectedImage: UIImage(named: "home_1"))
         kListenVC.tabBarItem = ESTabBarItem.init(KIrregularityTabBarItemContentView(),title: "我听",image: UIImage(named: "find"),selectedImage: UIImage(named: "find_1"))
         kPlayVC.tabBarItem = ESTabBarItem.init(KIrregularityCenterTabBarItemContentView(), title: nil, image: UIImage(named: "tab_play"), selectedImage: UIImage(named: "tab_play"))
-        kFindVC.tabBarItem = ESTabBarItem.init(KIrregularityTabBarItemContentView(),title: "发现",image: UIImage(named: "favor"),selectedImage: UIImage(named: "favor_1"))
+//        kFindVC.tabBarItem = ESTabBarItem.init(KIrregularityTabBarItemContentView(),title: "发现",image: UIImage(named: "favor"),selectedImage: UIImage(named: "favor_1"))
+        kSwiftVC.tabBarItem = ESTabBarItem.init(KIrregularityTabBarItemContentView(),title: "swift",image: UIImage(named: "favor"),selectedImage: UIImage(named: "favor_1"))
         kMineVC.tabBarItem = ESTabBarItem.init(KIrregularityTabBarItemContentView(),title: "我的",image: UIImage(named: "me"),selectedImage: UIImage(named: "me_1"))
         
         let kHomePageNav = KBaseNavigationController.init(rootViewController: kHomePageVC)
         let kListenNav = KBaseNavigationController.init(rootViewController: kListenVC)
         let kPlayNav = KBaseNavigationController.init(rootViewController: kPlayVC)
-        let kFindNav = KBaseNavigationController.init(rootViewController: kFindVC)
+        let kSwiftNav = KBaseNavigationController.init(rootViewController: kSwiftVC)
         let kMineNav = KBaseNavigationController.init(rootViewController: kMineVC)
         kHomePageVC.title = "首页"
         kListenVC.title = "我听"
-        kFindVC.title = "发现"
+        kSwiftVC.title = "swift"
         kMineVC.title = "我的"
-        esTabBarController.viewControllers = [kHomePageNav,kListenNav,kPlayNav,kFindNav,kMineNav]
+        esTabBarController.viewControllers = [kHomePageNav,kListenNav,kPlayNav,kSwiftNav,kMineNav]
+        esTabBarController.selectedIndex = 3
         return esTabBarController
     }
 

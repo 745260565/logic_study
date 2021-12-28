@@ -42,6 +42,7 @@
 		6A776F252668A8D600563417 /* WRCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A776F202668A8D600563417 /* WRCycleScrollView.swift */; };
 		6A776F262668A8D600563417 /* WRCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A776F212668A8D600563417 /* WRCycleCell.swift */; };
 		6A97367E2779BE1000FF1CA2 /* InitDeinitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A97367D2779BE1000FF1CA2 /* InitDeinitViewController.swift */; };
+		6A973683277AF79900FF1CA2 /* KSwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A973682277AF79900FF1CA2 /* KSwiftViewController.swift */; };
 		6AE19EC526735AB70094FE44 /* KListenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE19EC426735AB70094FE44 /* KListenHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		6A776F202668A8D600563417 /* WRCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRCycleScrollView.swift; sourceTree = "<group>"; };
 		6A776F212668A8D600563417 /* WRCycleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRCycleCell.swift; sourceTree = "<group>"; };
 		6A97367D2779BE1000FF1CA2 /* InitDeinitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDeinitViewController.swift; sourceTree = "<group>"; };
+		6A973682277AF79900FF1CA2 /* KSwiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSwiftViewController.swift; sourceTree = "<group>"; };
 		6AE19EC426735AB70094FE44 /* KListenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KListenHeaderView.swift; sourceTree = "<group>"; };
 		9D156D18849C328D708B58B7 /* Pods_SwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2FA47F4487CAB2732C6D0AE /* Pods-SwiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftDemo.debug.xcconfig"; path = "Target Support Files/Pods-SwiftDemo/Pods-SwiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				6A776F1A2668A8D600563417 /* Vendors */,
 				6A776F0026687A6400563417 /* Main */,
 				6A776F0326687A7D00563417 /* Listen */,
+				6A973681277AF73C00FF1CA2 /* Swift */,
 				6A776F0226687A7500563417 /* Find */,
 				6A776F0126687A6E00563417 /* Home */,
 				6A776EFF26687A5600563417 /* Play */,
@@ -292,6 +295,14 @@
 				6A97367D2779BE1000FF1CA2 /* InitDeinitViewController.swift */,
 			);
 			path = "构造函数和析构函数";
+			sourceTree = "<group>";
+		};
+		6A973681277AF73C00FF1CA2 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				6A973682277AF79900FF1CA2 /* KSwiftViewController.swift */,
+			);
+			path = Swift;
 			sourceTree = "<group>";
 		};
 		6AE19EC0267357130094FE44 /* View */ = {
@@ -465,6 +476,7 @@
 				6A776F0926687B1C00563417 /* KHomeViewController.swift in Sources */,
 				6A4E57AF267C94B0003DAA1B /* KListenSubscribeViewController.swift in Sources */,
 				6A776F1726687EC300563417 /* KIrregularityTabBarItemContentView.swift in Sources */,
+				6A973683277AF79900FF1CA2 /* KSwiftViewController.swift in Sources */,
 				6A776F242668A8D600563417 /* WRProxy.swift in Sources */,
 				6A4E57BB268192C0003DAA1B /* KListenSubscribeTableViewCell.swift in Sources */,
 				6A4E57B826807699003DAA1B /* KGuessYouLikeModel.swift in Sources */,
@@ -639,6 +651,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4FJAGRL7Z5;
 				INFOPLIST_FILE = SwiftDemo/Info.plist;
@@ -647,8 +660,9 @@
 					"@executable_path/Frameworks",
 				);
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xkw.ch.SwiftDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xkw.ch.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -660,6 +674,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4FJAGRL7Z5;
 				INFOPLIST_FILE = SwiftDemo/Info.plist;
@@ -668,8 +683,9 @@
 					"@executable_path/Frameworks",
 				);
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xkw.ch.SwiftDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xkw.ch.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

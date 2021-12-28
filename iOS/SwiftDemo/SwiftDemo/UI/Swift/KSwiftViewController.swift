@@ -1,13 +1,13 @@
 //
-//  KFindViewController.swift
+//  KSwiftViewController.swift
 //  SwiftDemo
 //
-//  Created by ChengHao on 2021/6/3.
+//  Created by ChengHao on 2021/12/28.
 //
 
 import UIKit
 
-class KFindViewController: UIViewController {
+class KSwiftViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,9 +15,12 @@ class KFindViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.view.backgroundColor = UIColor.systemBackground
+        
+        var t = Teacher()
+        print("end")
+        
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -29,3 +32,34 @@ class KFindViewController: UIViewController {
     */
 
 }
+
+//class Teacher{
+//    var age: Int
+//    var name: String
+//
+//    init(age: Int, name: String) {
+//        self.age = age;
+//        self.name = name
+//    }
+//
+//    deinit{
+//
+//    }
+//}
+
+class Person{
+    var age = 18
+    var name = "mc"
+}
+
+class Teacher{
+    var age = 18
+    var name = "ch"
+    var p = Person()
+}
+
+enum Color {
+    case blue,green,gray
+}
+
+
