@@ -16,22 +16,30 @@ class KSwiftViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.systemBackground
         
-        var t = Teacher()
+        var t = Teacher("ch")
         print("end")
         
+        var m = M()
+        var a = S(m: m)
+        var b = a
+        a.m.k = 2
+        a.num = 5
+        print(b.m.k)
+        print(b.num)
+        
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+struct S{
+    var num = 3
+    var m:M
+}
+
+class M{
+    var k = 4
+}
+
+
 
 //class Teacher{
 //    var age: Int
@@ -47,19 +55,34 @@ class KSwiftViewController: UIViewController {
 //    }
 //}
 
-class Person{
-    var age = 18
-    var name = "mc"
+class SubTeacher: Teacher{
+    var subjectName: String
+    init(_ subjectName: String) {
+        self.subjectName = subjectName
+        super.init(20,"ch")
+    }
 }
 
 class Teacher{
-    var age = 18
-    var name = "ch"
-    var p = Person()
-}
-
-enum Color {
-    case blue,green,gray
+    var age: Int
+    var name: String
+    
+    init(_ age: Int, _ name: String){
+        self.age = age;
+        self.name = name;
+    }
+    
+    convenience init(_ age: Int){
+        self.init(age, "")
+        self.age = age
+        self.name = ""
+    }
+    
+    convenience init(_ name: String){
+        self.init(20,name)
+        self.age = 20
+        self.name = "ch"
+    }
 }
 
 
