@@ -9,6 +9,11 @@ import UIKit
 import Darwin
 
 class KSwiftViewController: UIViewController {
+    
+    var tableView:UITableView!
+    var titles = ["函数的调用"]
+    let identifier = "resuedCell"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,16 +22,51 @@ class KSwiftViewController: UIViewController {
     
         self.view.backgroundColor = UIColor.systemBackground
         
-        var t = LGTeacher()
-        //获取实例对象的指针
-        let objcRawPtr = Unmanaged.passUnretained(t as AnyObject).toOpaque()
-        let objcPtr = objcRawPtr.bindMemory(to: HeapObject.self, capacity: 1)
-        print(objcPtr.pointee)
-        let metatata = objcPtr.pointee.metadata.bindMemory(to: Metadata.self, capacity: MemoryLayout<Metadata>.stride).pointee
-    
-        print(metatata)
-        print("end")
+        setUpView()
+        
+//        var t = LGTeacher()
+//        //获取实例对象的指针
+//        let objcRawPtr = Unmanaged.passUnretained(t as AnyObject).toOpaque()
+//        let objcPtr = objcRawPtr.bindMemory(to: HeapObject.self, capacity: 1)
+//        print(objcPtr.pointee)
+//        let metatata = objcPtr.pointee.metadata.bindMemory(to: Metadata.self, capacity: MemoryLayout<Metadata>.stride).pointee
+//
+//        print(metatata)
+//        print("end")
     }
+    
+    func setUpView(){
+        self.tableView = UITableView(frame: self.view.frame, style: .plain)
+        print(self.view.frame)
+        self.tableView?.delegate = self
+        self.tableView?.dataSource = self
+        self.view.addSubview(tableView)
+    }
+}
+
+extension KSwiftViewController: UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        titles.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: identifier)
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: identifier)
+        }
+        cell?.textLabel?.text = titles[indexPath.row]
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            self.navigationController?.pushViewController(SwiftMethodViewController(), animated: false)
+        default:
+            break
+        }
+    }
+    
 }
 
 

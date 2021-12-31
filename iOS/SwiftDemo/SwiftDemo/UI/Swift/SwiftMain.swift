@@ -8,5 +8,3 @@
 import Foundation
 
 var age = 10
-
-func modifyage(
