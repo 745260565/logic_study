@@ -14,10 +14,10 @@ class SwiftMethodViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.systemBackground
         
-        let t = CHTeacher()
-        t.teach()
-        t.teach1()
-        t.teach2()
+//        let t = CHTeacher()
+//        t.teach()
+//        t.teach1()
+//        t.teach2()
 
         // Do any additional setup after loading the view.
     }
@@ -35,4 +35,18 @@ class CHTeacher{
     func teach2(){
         print("teach2")
     }
+}
+
+class LGTeacher{
+    let age: Int
+    var name: String
+    init(age:Int,name:String) {
+        self.age = age
+        self.name = name
+    }
+}
+
+struct LGStudent{
+    let age:Int
+    var name:String
 }

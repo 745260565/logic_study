@@ -120,10 +120,10 @@ class Teacher{
     }
 }
 
-class LGTeacher{
-    var age: Int = 18
-    var name: String = "ch"
-}
+//class LGTeacher{
+//    var age: Int = 18
+//    var name: String = "ch"
+//}
 
 struct HeapObject{
     var metadata: UnsafeRawPointer
