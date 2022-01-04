@@ -24,7 +24,7 @@ class SwiftMethodViewController: UIViewController {
 }
  
 class CHTeacher{
-    func teach(){
+     @objc dynamic func teach(){
         print("teach")
     }
     

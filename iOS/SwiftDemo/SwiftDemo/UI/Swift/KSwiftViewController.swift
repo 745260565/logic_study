@@ -11,7 +11,7 @@ import Darwin
 class KSwiftViewController: UIViewController {
     
     var tableView:UITableView!
-    var titles = ["函数的调用"]
+    var titles = ["函数的调用","Metadata结构"]
     let identifier = "resuedCell"
     
 
@@ -62,6 +62,8 @@ extension KSwiftViewController: UITableViewDelegate,UITableViewDataSource {
         switch indexPath.row {
         case 0:
             self.navigationController?.pushViewController(SwiftMethodViewController(), animated: false)
+        case 1:
+            self.navigationController?.pushViewController(MetadataViewController(), animated: false)
         default:
             break
         }
