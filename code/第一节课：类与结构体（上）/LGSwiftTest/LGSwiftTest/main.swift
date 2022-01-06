@@ -19,11 +19,20 @@ import Foundation
 //
 //Subject.sharedInstance
 
-clas Teacher{
-    var age = 18
-    
-    var name = "ch"
+//clas Teacher{
+//    var age = 18
+//
+//    var name = "ch"
+//}
+
+struct Teacher{
+    var age: Int = 18
+    var name: String = "ch"
 }
+
+var size: UInt = 0
+var ptr = getsectdata("__TEXT", "", &size)
+var mHeaderPtr = _dyld_get_image_header(0)
 
 
 

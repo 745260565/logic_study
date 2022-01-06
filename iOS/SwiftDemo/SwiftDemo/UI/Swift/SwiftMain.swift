@@ -10,5 +10,3 @@ import Foundation
 var age = 10
 
 
-
-

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MachO
 
 class PointerViewController: UIViewController {
 
@@ -27,22 +28,45 @@ class PointerViewController: UIViewController {
 //        }
         
         //得到变量内存指针
-        var age = 18
-        withUnsafePointer(to: &age) { ptr in
-            print(ptr)
-        }
+//        var age = 18
+//        withUnsafePointer(to: &age) { ptr in
+//            print(ptr)
+//        }
+//
+//        age = withUnsafePointer(to: &age) { ptr in
+//            return ptr.pointee + 21
+//        }
+//        print(age)
         
-        age = withUnsafePointer(to: &age) { ptr in
-            return ptr.pointee + 21
-        }
-        print(age)
+        
+//        var tPtr = UnsafeMutablePointer<PointStruct>.allocate(capacity: 5)
+//        tPtr[0] = PointStruct(age: 19, height: 28)
+//
+//        //成对出现，回收这一片内存空间
+//        tPtr.deinitialize(count: 5)
+//        tPtr.deallocate()
+//
+//        tPtr.advanced(by: 0).initialize(to: <#T##PointStruct#>)
+        
+        
+        //指针读取Macho中的属性名称
+        var size: UInt = 0
+        var ptr = getsectdata("__TEXT","__swift5_types", &size)
+        print(ptr)
     }
 }
 
 struct PointClass {
-    var max: String = "adsdfsfdsdd你好sfdfasdsac"
+    var name: String = "adsdfsfdsdd你好sfdfasdsac"
     var age: Int = 18
-    var sex: Bool = true
+//    var sex: Bool = true
 }
+
+struct PointStruct {
+    var age: Int
+    var height: Double
+}
+
+
 
 
