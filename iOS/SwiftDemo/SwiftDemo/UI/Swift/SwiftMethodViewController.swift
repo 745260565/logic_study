@@ -38,9 +38,10 @@ class CHTeacher{
 }
 
 class LGTeacher{
+    lazy var a: Int = 19
     let age: Int
     var name: String
-    init(age:Int,name:String) {
+    init(a: Int,age:Int,name:String) {
         self.age = age
         self.name = name
     }
