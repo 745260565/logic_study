@@ -50,6 +50,36 @@ class PointerViewController: UIViewController {
         
 //        machoTest()
         
+        let tuple = (10,20)
+//        withUnsafePointer(to: tuple) { (tupleTpr: UnsafePointer<(Int, Int)>) in
+//            testPoint(UnsafeRawPointer(tupleTpr).bindMemory(to: Int.self, capacity: 1))
+//        }
+        
+//        let Uint8Ptr = UnsafePointer<UInt8>.init(bitPattern: 10)
+//        Uint8Ptr?.withMemoryRebound(to: Int8.self, capacity: 1){ (int8Ptr: UnsafePointer<Int8>) in
+//            testPoint(int8Ptr)
+//        }
+        var t = PointTeacher()
+        //固定用法，打印t这个实例的内存指针
+        print(Unmanaged.passUnretained(t as AnyObject).toOpaque())
+//        var t1 = t
+//        print(Unmanaged.passUnretained(t as AnyObject).toOpaque())
+//        var t2 = t
+//        print(Unmanaged.passUnretained(t as AnyObject).toOpaque())
+//        weak var t1 = t
+//        print("end")
+        
+        var age = 0
+        var height = 0.0
+        //捕获列表参数都是let ,所以age值在闭包内部不能改变，值类型调用闭包时再捕获
+        let closure = { [age] in
+            print(age)
+            print(height)
+        }
+        age = 10
+        height = 1.87
+        closure()
+        
     }
     
     func machoTest(){
@@ -130,6 +160,16 @@ struct PointClass {
 struct PointStruct {
     var age: Int
     var height: Double
+}
+
+class PointTeacher{
+    var age: Int = 28
+    var name: String = "dcjk"
+}
+
+func testPoint(_ p: UnsafePointer<Int8>) {
+    print(p[0])
+    print(p[1])
 }
 
 

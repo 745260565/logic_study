@@ -38,6 +38,7 @@
 		6A4E57BB268192C0003DAA1B /* KListenSubscribeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E57BA268192C0003DAA1B /* KListenSubscribeTableViewCell.swift */; };
 		6A4E57BE2681E7BD003DAA1B /* KListenMoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E57BD2681E7BD003DAA1B /* KListenMoyaProvider.swift */; };
 		6A4E57C32685C6EC003DAA1B /* ClosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E57C22685C6EC003DAA1B /* ClosureViewController.swift */; };
+		6A588A9C278B174900059705 /* EnumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A588A9B278B174900059705 /* EnumViewController.swift */; };
 		6A6962102689C6CC004594DC /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A69620F2689C6CC004594DC /* CollectionViewController.swift */; };
 		6A696214268EC0E1004594DC /* MirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A696213268EC0E0004594DC /* MirrorViewController.swift */; };
 		6A776EF82668758700563417 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A776EF72668758600563417 /* Assets.xcassets */; };
@@ -97,6 +98,7 @@
 		6A4E57BA268192C0003DAA1B /* KListenSubscribeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KListenSubscribeTableViewCell.swift; sourceTree = "<group>"; };
 		6A4E57BD2681E7BD003DAA1B /* KListenMoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KListenMoyaProvider.swift; sourceTree = "<group>"; };
 		6A4E57C22685C6EC003DAA1B /* ClosureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureViewController.swift; sourceTree = "<group>"; };
+		6A588A9B278B174900059705 /* EnumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumViewController.swift; sourceTree = "<group>"; };
 		6A69620F2689C6CC004594DC /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		6A696213268EC0E0004594DC /* MirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorViewController.swift; sourceTree = "<group>"; };
 		6A776EF72668758600563417 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				6A9736B9277EF31D00FF1CA2 /* SwiftMethodViewController.swift */,
 				6A9736BD2783F7AD00FF1CA2 /* MetadataViewController.swift */,
 				6A9736BF2786DC2400FF1CA2 /* PointerViewController.swift */,
+				6A588A9B278B174900059705 /* EnumViewController.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				6A776F1726687EC300563417 /* KIrregularityTabBarItemContentView.swift in Sources */,
 				6A973683277AF79900FF1CA2 /* KSwiftViewController.swift in Sources */,
 				6A776F242668A8D600563417 /* WRProxy.swift in Sources */,
+				6A588A9C278B174900059705 /* EnumViewController.swift in Sources */,
 				6A4E57BB268192C0003DAA1B /* KListenSubscribeTableViewCell.swift in Sources */,
 				6A4E57B826807699003DAA1B /* KGuessYouLikeModel.swift in Sources */,
 				6AE19EC526735AB70094FE44 /* KListenHeaderView.swift in Sources */,
