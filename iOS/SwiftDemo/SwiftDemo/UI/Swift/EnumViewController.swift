@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class EnumViewController: UIViewController {
 
@@ -30,8 +31,14 @@ class EnumViewController: UIViewController {
 //        var c = Week.WEDDAY
 //        print(MemoryLayout<Week>.size)
         
-        print(MemoryLayout<Enum>.size)
-        print(MemoryLayout<Enum>.stride)
+//        print(MemoryLayout<Enum>.size)
+//        print(MemoryLayout<Enum>.stride)
+        
+        var node = BinaryTree<Int>.node(left: BinaryTree<Int>.empty, value: 10, right: BinaryTree<Int>.empty)
+        var empty = BinaryTree<Int>.empty
+        print(MemoryLayout<BinaryTree<Int>>.size)
+        print(MemoryLayout<BinaryTree<Int>>.stride)
+
         
         // Do any additional setup after loading the view.
     }
@@ -63,6 +70,12 @@ class EnumViewController: UIViewController {
         case test_two(Int)
         case test_three
         case test_four
+    }
+    
+    //indirect 让BinaryTree分配在堆空间
+    enum BinaryTree<T>{
+        case empty
+        indirect case node(left:BinaryTree,value:T,right:BinaryTree)
     }
     
 }
