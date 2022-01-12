@@ -11,7 +11,7 @@ import Darwin
 class KSwiftViewController: UIViewController {
     
     var tableView:UITableView!
-    var titles = ["函数的调用","Metadata结构","Swift指针","枚举","可选类型"]
+    var titles = ["函数的调用","Metadata结构","Swift指针","枚举","可选类型","反射"]
     let identifier = "resuedCell"
     
 
@@ -74,6 +74,10 @@ extension KSwiftViewController: UITableViewDelegate,UITableViewDataSource {
             self.navigationController?.pushViewController(p, animated: false)
         case 4:
             let p = OperationViewController()
+            p.title = "可选类型"
+            self.navigationController?.pushViewController(p, animated: false)
+        case 5:
+            let p = LGMirriorViewController()
             p.title = "可选类型"
             self.navigationController?.pushViewController(p, animated: false)
         default:
