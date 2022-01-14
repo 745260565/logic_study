@@ -12,42 +12,13 @@ class SwiftMethodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.systemBackground
-        
-//        let t = CHTeacher()
-//        t.teach()
-//        t.teach1()
-//        t.teach2()
-
-        // Do any additional setup after loading the view.
+        let t = CHTeacher()
     }
+}
+
+class CHTeacher{
+    var age = 18
+    let x = 19
 }
  
-class CHTeacher{
-     @objc dynamic func teach(){
-        print("teach")
-    }
-    
-    func teach1(){
-        print("teach1")
-    }
-    
-    func teach2(){
-        print("teach2")
-    }
-}
 
-class LGTeacher{
-    lazy var a: Int = 19
-    let age: Int
-    var name: String
-    init(a: Int,age:Int,name:String) {
-        self.age = age
-        self.name = name
-    }
-}
-
-struct LGStudent{
-    let age:Int
-    var name:String
-}

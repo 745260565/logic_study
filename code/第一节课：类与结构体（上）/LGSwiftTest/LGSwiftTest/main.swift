@@ -7,54 +7,11 @@
 
 import Foundation
 
-struct Point {
-    var x = 0.0, y = 0.0
-    
-    func test(){
-        let z = self.x
-    }
-    
-    mutating func moveBy(x deltax: Double,y deltaY:Double) {
-        x += deltax
-        y += deltaY
-    }
+class Teacher {
+    // 只被初始化一次
+    static var age: Int = 18
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 可以修改
+Teacher.age = 30
+Teacher.age = 20
