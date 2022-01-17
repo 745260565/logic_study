@@ -6,182 +6,197 @@ import SwiftShims
 
 import Foundation
 
-class Teacher {
-  @_hasStorage @_hasInitialValue static var age: Int { get set }
-  @objc deinit
-  init()
-}
+func addTwoInts(_ a: Int, _ b: Int) -> Int
 
-// one-time initialization token for age
-sil_global private @$s4main7TeacherC3age_Wz : $Builtin.Word
+func addTwoInts(_ a: Double, _ b: Double) -> Double
 
-// static Teacher.age
-sil_global hidden @$s4main7TeacherC3ageSivpZ : $Int
+@_hasStorage @_hasInitialValue var m: (Double, Double) -> Double { get set }
+
+// m
+sil_global hidden @$s4main1myS2d_Sdtcvp : $@callee_guaranteed (Double, Double) -> Double
 
 // main
 sil @main : $@convention(c) (Int32, UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>) -> Int32 {
 bb0(%0 : $Int32, %1 : $UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>):
-  %2 = metatype $@thick Teacher.Type
-  // function_ref Teacher.age.unsafeMutableAddressor
-  %3 = function_ref @$s4main7TeacherC3ageSivau : $@convention(thin) () -> Builtin.RawPointer // user: %4
-  %4 = apply %3() : $@convention(thin) () -> Builtin.RawPointer // user: %5
-  %5 = pointer_to_address %4 : $Builtin.RawPointer to [strict] $*Int // user: %8
-  %6 = integer_literal $Builtin.Int64, 30         // user: %7
-  %7 = struct $Int (%6 : $Builtin.Int64)          // user: %9
-  %8 = begin_access [modify] [dynamic] %5 : $*Int // users: %9, %10
-  store %7 to %8 : $*Int                          // id: %9
-  end_access %8 : $*Int                           // id: %10
-  %11 = metatype $@thick Teacher.Type
-  // function_ref Teacher.age.unsafeMutableAddressor
-  %12 = function_ref @$s4main7TeacherC3ageSivau : $@convention(thin) () -> Builtin.RawPointer // user: %13
-  %13 = apply %12() : $@convention(thin) () -> Builtin.RawPointer // user: %14
-  %14 = pointer_to_address %13 : $Builtin.RawPointer to [strict] $*Int // user: %17
-  %15 = integer_literal $Builtin.Int64, 20        // user: %16
-  %16 = struct $Int (%15 : $Builtin.Int64)        // user: %18
-  %17 = begin_access [modify] [dynamic] %14 : $*Int // users: %18, %19
-  store %16 to %17 : $*Int                        // id: %18
-  end_access %17 : $*Int                          // id: %19
-  %20 = integer_literal $Builtin.Int32, 0         // user: %21
-  %21 = struct $Int32 (%20 : $Builtin.Int32)      // user: %22
-  return %21 : $Int32                             // id: %22
+  alloc_global @$s4main1myS2d_Sdtcvp              // id: %2
+  %3 = global_addr @$s4main1myS2d_Sdtcvp : $*@callee_guaranteed (Double, Double) -> Double // users: %6, %13
+  // function_ref addTwoInts(_:_:)
+  %4 = function_ref @$s4main10addTwoIntsyS2d_SdtF : $@convention(thin) (Double, Double) -> Double // user: %5
+  %5 = thin_to_thick_function %4 : $@convention(thin) (Double, Double) -> Double to $@callee_guaranteed (Double, Double) -> Double // user: %6
+  store %5 to %3 : $*@callee_guaranteed (Double, Double) -> Double // id: %6
+  %7 = integer_literal $Builtin.Word, 1           // user: %9
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %8 = function_ref @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %9
+  %9 = apply %8<Any>(%7) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %11, %10
+  %10 = tuple_extract %9 : $(Array<Any>, Builtin.RawPointer), 0 // user: %25
+  %11 = tuple_extract %9 : $(Array<Any>, Builtin.RawPointer), 1 // user: %12
+  %12 = pointer_to_address %11 : $Builtin.RawPointer to [strict] $*Any // user: %22
+  %13 = begin_access [read] [dynamic] %3 : $*@callee_guaranteed (Double, Double) -> Double // users: %14, %16
+  %14 = load %13 : $*@callee_guaranteed (Double, Double) -> Double // users: %26, %21, %15
+  strong_retain %14 : $@callee_guaranteed (Double, Double) -> Double // id: %15
+  end_access %13 : $*@callee_guaranteed (Double, Double) -> Double // id: %16
+  %17 = float_literal $Builtin.FPIEEE64, 0x4024000000000000 // 10 // user: %18
+  %18 = struct $Double (%17 : $Builtin.FPIEEE64)  // user: %21
+  %19 = float_literal $Builtin.FPIEEE64, 0x4034000000000000 // 20 // user: %20
+  %20 = struct $Double (%19 : $Builtin.FPIEEE64)  // user: %21
+  %21 = apply %14(%18, %20) : $@callee_guaranteed (Double, Double) -> Double // user: %23
+  %22 = init_existential_addr %12 : $*Any, $Double // user: %23
+  store %21 to %22 : $*Double                     // id: %23
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %24 = function_ref @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %25
+  %25 = apply %24<Any>(%10) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %35, %32
+  strong_release %14 : $@callee_guaranteed (Double, Double) -> Double // id: %26
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %27 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA0_ : $@convention(thin) () -> @owned String // user: %28
+  %28 = apply %27() : $@convention(thin) () -> @owned String // users: %34, %32
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %29 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA1_ : $@convention(thin) () -> @owned String // user: %30
+  %30 = apply %29() : $@convention(thin) () -> @owned String // users: %33, %32
+  // function_ref print(_:separator:terminator:)
+  %31 = function_ref @$ss5print_9separator10terminatoryypd_S2StF : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %32
+  %32 = apply %31(%25, %28, %30) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+  release_value %30 : $String                     // id: %33
+  release_value %28 : $String                     // id: %34
+  release_value %25 : $Array<Any>                 // id: %35
+  %36 = integer_literal $Builtin.Int32, 0         // user: %37
+  %37 = struct $Int32 (%36 : $Builtin.Int32)      // user: %38
+  return %37 : $Int32                             // id: %38
 } // end sil function 'main'
 
-// one-time initialization function for age
-sil private [global_init_once_fn] @$s4main7TeacherC3age_WZ : $@convention(c) () -> () {
-bb0:
-  alloc_global @$s4main7TeacherC3ageSivpZ         // id: %0
-  %1 = global_addr @$s4main7TeacherC3ageSivpZ : $*Int // user: %4
-  %2 = integer_literal $Builtin.Int64, 18         // user: %3
-  %3 = struct $Int (%2 : $Builtin.Int64)          // user: %4
-  store %3 to %1 : $*Int                          // id: %4
-  %5 = tuple ()                                   // user: %6
-  return %5 : $()                                 // id: %6
-} // end sil function '$s4main7TeacherC3age_WZ'
+// addTwoInts(_:_:)
+sil hidden @$s4main10addTwoIntsyS2i_SitF : $@convention(thin) (Int, Int) -> Int {
+// %0 "a"                                         // users: %4, %2
+// %1 "b"                                         // users: %5, %3
+bb0(%0 : $Int, %1 : $Int):
+  debug_value %0 : $Int, let, name "a", argno 1   // id: %2
+  debug_value %1 : $Int, let, name "b", argno 2   // id: %3
+  %4 = struct_extract %0 : $Int, #Int._value      // user: %7
+  %5 = struct_extract %1 : $Int, #Int._value      // user: %7
+  %6 = integer_literal $Builtin.Int1, -1          // user: %7
+  %7 = builtin "sadd_with_overflow_Int64"(%4 : $Builtin.Int64, %5 : $Builtin.Int64, %6 : $Builtin.Int1) : $(Builtin.Int64, Builtin.Int1) // users: %9, %8
+  %8 = tuple_extract %7 : $(Builtin.Int64, Builtin.Int1), 0 // user: %11
+  %9 = tuple_extract %7 : $(Builtin.Int64, Builtin.Int1), 1 // user: %10
+  cond_fail %9 : $Builtin.Int1, "arithmetic overflow" // id: %10
+  %11 = struct $Int (%8 : $Builtin.Int64)         // user: %12
+  return %11 : $Int                               // id: %12
+} // end sil function '$s4main10addTwoIntsyS2i_SitF'
 
-// Int.init(_builtinIntegerLiteral:)
-sil public_external [transparent] @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int {
+// static Int.+ infix(_:_:)
+sil public_external [transparent] @$sSi1poiyS2i_SitFZ : $@convention(method) (Int, Int, @thin Int.Type) -> Int {
+// %0                                             // user: %3
+// %1                                             // user: %4
+bb0(%0 : $Int, %1 : $Int, %2 : $@thin Int.Type):
+  %3 = struct_extract %0 : $Int, #Int._value      // user: %6
+  %4 = struct_extract %1 : $Int, #Int._value      // user: %6
+  %5 = integer_literal $Builtin.Int1, -1          // user: %6
+  %6 = builtin "sadd_with_overflow_Int64"(%3 : $Builtin.Int64, %4 : $Builtin.Int64, %5 : $Builtin.Int1) : $(Builtin.Int64, Builtin.Int1) // users: %8, %7
+  %7 = tuple_extract %6 : $(Builtin.Int64, Builtin.Int1), 0 // user: %10
+  %8 = tuple_extract %6 : $(Builtin.Int64, Builtin.Int1), 1 // user: %9
+  cond_fail %8 : $Builtin.Int1, "arithmetic overflow" // id: %9
+  %10 = struct $Int (%7 : $Builtin.Int64)         // user: %11
+  return %10 : $Int                               // id: %11
+} // end sil function '$sSi1poiyS2i_SitFZ'
+
+// addTwoInts(_:_:)
+sil hidden @$s4main10addTwoIntsyS2d_SdtF : $@convention(thin) (Double, Double) -> Double {
+// %0 "a"                                         // users: %4, %2
+// %1 "b"                                         // users: %5, %3
+bb0(%0 : $Double, %1 : $Double):
+  debug_value %0 : $Double, let, name "a", argno 1 // id: %2
+  debug_value %1 : $Double, let, name "b", argno 2 // id: %3
+  %4 = struct_extract %0 : $Double, #Double._value // user: %6
+  %5 = struct_extract %1 : $Double, #Double._value // user: %6
+  %6 = builtin "fadd_FPIEEE64"(%4 : $Builtin.FPIEEE64, %5 : $Builtin.FPIEEE64) : $Builtin.FPIEEE64 // user: %7
+  %7 = struct $Double (%6 : $Builtin.FPIEEE64)    // user: %8
+  return %7 : $Double                             // id: %8
+} // end sil function '$s4main10addTwoIntsyS2d_SdtF'
+
+// static Double.+ infix(_:_:)
+sil public_external [transparent] @$sSd1poiyS2d_SdtFZ : $@convention(method) (Double, Double, @thin Double.Type) -> Double {
+// %0                                             // user: %3
+// %1                                             // user: %4
+bb0(%0 : $Double, %1 : $Double, %2 : $@thin Double.Type):
+  %3 = struct_extract %0 : $Double, #Double._value // user: %5
+  %4 = struct_extract %1 : $Double, #Double._value // user: %5
+  %5 = builtin "fadd_FPIEEE64"(%3 : $Builtin.FPIEEE64, %4 : $Builtin.FPIEEE64) : $Builtin.FPIEEE64 // user: %6
+  %6 = struct $Double (%5 : $Builtin.FPIEEE64)    // user: %7
+  return %6 : $Double                             // id: %7
+} // end sil function '$sSd1poiyS2d_SdtFZ'
+
+// _allocateUninitializedArray<A>(_:)
+sil [always_inline] [_semantics "array.uninitialized_intrinsic"] @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer)
+
+// Double.init(_builtinIntegerLiteral:)
+sil public_external [transparent] @$sSd22_builtinIntegerLiteralSdBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Double.Type) -> Double {
 // %0                                             // user: %2
-bb0(%0 : $Builtin.IntLiteral, %1 : $@thin Int.Type):
-  %2 = builtin "s_to_s_checked_trunc_IntLiteral_Int64"(%0 : $Builtin.IntLiteral) : $(Builtin.Int64, Builtin.Int1) // user: %3
-  %3 = tuple_extract %2 : $(Builtin.Int64, Builtin.Int1), 0 // user: %4
-  %4 = struct $Int (%3 : $Builtin.Int64)          // user: %5
-  return %4 : $Int                                // id: %5
-} // end sil function '$sSi22_builtinIntegerLiteralSiBI_tcfC'
+bb0(%0 : $Builtin.IntLiteral, %1 : $@thin Double.Type):
+  %2 = builtin "itofp_with_overflow_IntLiteral_FPIEEE64"(%0 : $Builtin.IntLiteral) : $Builtin.FPIEEE64 // user: %3
+  %3 = struct $Double (%2 : $Builtin.FPIEEE64)    // user: %4
+  return %3 : $Double                             // id: %4
+} // end sil function '$sSd22_builtinIntegerLiteralSdBI_tcfC'
 
-// Teacher.age.unsafeMutableAddressor
-sil hidden [global_init] @$s4main7TeacherC3ageSivau : $@convention(thin) () -> Builtin.RawPointer {
+// _finalizeUninitializedArray<A>(_:)
+sil shared_external [readnone] [_semantics "array.finalize_intrinsic"] @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <Element> (@owned Array<Element>) -> @owned Array<Element> {
+// %0                                             // user: %2
+bb0(%0 : $Array<Element>):
+  %1 = alloc_stack $Array<Element>                // users: %6, %5, %4, %2
+  store %0 to %1 : $*Array<Element>               // id: %2
+  // function_ref Array._endMutation()
+  %3 = function_ref @$sSa12_endMutationyyF : $@convention(method) <τ_0_0> (@inout Array<τ_0_0>) -> () // user: %4
+  %4 = apply %3<Element>(%1) : $@convention(method) <τ_0_0> (@inout Array<τ_0_0>) -> ()
+  %5 = load %1 : $*Array<Element>                 // user: %7
+  dealloc_stack %1 : $*Array<Element>             // id: %6
+  return %5 : $Array<Element>                     // id: %7
+} // end sil function '$ss27_finalizeUninitializedArrayySayxGABnlF'
+
+// default argument 1 of print(_:separator:terminator:)
+sil shared_external @$ss5print_9separator10terminatoryypd_S2StFfA0_ : $@convention(thin) () -> @owned String {
 bb0:
-  %0 = global_addr @$s4main7TeacherC3age_Wz : $*Builtin.Word // user: %1
-  %1 = address_to_pointer %0 : $*Builtin.Word to $Builtin.RawPointer // user: %3
-  // function_ref one-time initialization function for age
-  %2 = function_ref @$s4main7TeacherC3age_WZ : $@convention(c) () -> () // user: %3
-  %3 = builtin "once"(%1 : $Builtin.RawPointer, %2 : $@convention(c) () -> ()) : $()
-  %4 = global_addr @$s4main7TeacherC3ageSivpZ : $*Int // user: %5
-  %5 = address_to_pointer %4 : $*Int to $Builtin.RawPointer // user: %6
-  return %5 : $Builtin.RawPointer                 // id: %6
-} // end sil function '$s4main7TeacherC3ageSivau'
+  %0 = string_literal utf8 " "                    // user: %5
+  %1 = integer_literal $Builtin.Word, 1           // user: %5
+  %2 = integer_literal $Builtin.Int1, -1          // user: %5
+  %3 = metatype $@thin String.Type                // user: %5
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %4 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
+  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
+  return %5 : $String                             // id: %6
+} // end sil function '$ss5print_9separator10terminatoryypd_S2StFfA0_'
 
-// static Teacher.age.getter
-sil hidden [transparent] @$s4main7TeacherC3ageSivgZ : $@convention(method) (@thick Teacher.Type) -> Int {
-// %0 "self"                                      // user: %1
-bb0(%0 : $@thick Teacher.Type):
-  debug_value %0 : $@thick Teacher.Type, let, name "self", argno 1 // id: %1
-  // function_ref Teacher.age.unsafeMutableAddressor
-  %2 = function_ref @$s4main7TeacherC3ageSivau : $@convention(thin) () -> Builtin.RawPointer // user: %3
-  %3 = apply %2() : $@convention(thin) () -> Builtin.RawPointer // user: %4
-  %4 = pointer_to_address %3 : $Builtin.RawPointer to [strict] $*Int // user: %5
-  %5 = begin_access [read] [dynamic] %4 : $*Int   // users: %6, %7
-  %6 = load %5 : $*Int                            // user: %8
-  end_access %5 : $*Int                           // id: %7
-  return %6 : $Int                                // id: %8
-} // end sil function '$s4main7TeacherC3ageSivgZ'
+// default argument 2 of print(_:separator:terminator:)
+sil shared_external @$ss5print_9separator10terminatoryypd_S2StFfA1_ : $@convention(thin) () -> @owned String {
+bb0:
+  %0 = string_literal utf8 "\n"                   // user: %5
+  %1 = integer_literal $Builtin.Word, 1           // user: %5
+  %2 = integer_literal $Builtin.Int1, -1          // user: %5
+  %3 = metatype $@thin String.Type                // user: %5
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %4 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
+  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
+  return %5 : $String                             // id: %6
+} // end sil function '$ss5print_9separator10terminatoryypd_S2StFfA1_'
 
-// static Teacher.age.setter
-sil hidden [transparent] @$s4main7TeacherC3ageSivsZ : $@convention(method) (Int, @thick Teacher.Type) -> () {
-// %0 "value"                                     // users: %8, %2
-// %1 "self"                                      // user: %3
-bb0(%0 : $Int, %1 : $@thick Teacher.Type):
-  debug_value %0 : $Int, let, name "value", argno 1 // id: %2
-  debug_value %1 : $@thick Teacher.Type, let, name "self", argno 2 // id: %3
-  // function_ref Teacher.age.unsafeMutableAddressor
-  %4 = function_ref @$s4main7TeacherC3ageSivau : $@convention(thin) () -> Builtin.RawPointer // user: %5
-  %5 = apply %4() : $@convention(thin) () -> Builtin.RawPointer // user: %6
-  %6 = pointer_to_address %5 : $Builtin.RawPointer to [strict] $*Int // user: %7
-  %7 = begin_access [modify] [dynamic] %6 : $*Int // users: %8, %9
-  store %0 to %7 : $*Int                          // id: %8
-  end_access %7 : $*Int                           // id: %9
+// print(_:separator:terminator:)
+sil @$ss5print_9separator10terminatoryypd_S2StF : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+
+// Array._endMutation()
+sil shared_external [_semantics "array.end_mutation"] @$sSa12_endMutationyyF : $@convention(method) <Element> (@inout Array<Element>) -> () {
+// %0                                             // users: %9, %1
+bb0(%0 : $*Array<Element>):
+  %1 = struct_element_addr %0 : $*Array<Element>, #Array._buffer // user: %2
+  %2 = struct_element_addr %1 : $*_ArrayBuffer<Element>, #_ArrayBuffer._storage // user: %3
+  %3 = struct_element_addr %2 : $*_BridgeStorage<__ContiguousArrayStorageBase>, #_BridgeStorage.rawValue // user: %4
+  %4 = load %3 : $*Builtin.BridgeObject           // user: %5
+  %5 = end_cow_mutation %4 : $Builtin.BridgeObject // user: %6
+  %6 = struct $_BridgeStorage<__ContiguousArrayStorageBase> (%5 : $Builtin.BridgeObject) // user: %7
+  %7 = struct $_ArrayBuffer<Element> (%6 : $_BridgeStorage<__ContiguousArrayStorageBase>) // user: %8
+  %8 = struct $Array<Element> (%7 : $_ArrayBuffer<Element>) // user: %9
+  store %8 to %0 : $*Array<Element>               // id: %9
   %10 = tuple ()                                  // user: %11
   return %10 : $()                                // id: %11
-} // end sil function '$s4main7TeacherC3ageSivsZ'
+} // end sil function '$sSa12_endMutationyyF'
 
-// static Teacher.age.modify
-sil hidden [transparent] @$s4main7TeacherC3ageSivMZ : $@yield_once @convention(method) (@thick Teacher.Type) -> @yields @inout Int {
-// %0 "self"                                      // user: %1
-bb0(%0 : $@thick Teacher.Type):
-  debug_value %0 : $@thick Teacher.Type, let, name "self", argno 1 // id: %1
-  // function_ref Teacher.age.unsafeMutableAddressor
-  %2 = function_ref @$s4main7TeacherC3ageSivau : $@convention(thin) () -> Builtin.RawPointer // user: %3
-  %3 = apply %2() : $@convention(thin) () -> Builtin.RawPointer // user: %4
-  %4 = pointer_to_address %3 : $Builtin.RawPointer to [strict] $*Int // user: %5
-  %5 = begin_access [modify] [dynamic] %4 : $*Int // users: %7, %10, %6
-  yield %5 : $*Int, resume bb1, unwind bb2        // id: %6
-
-bb1:                                              // Preds: bb0
-  end_access %5 : $*Int                           // id: %7
-  %8 = tuple ()                                   // user: %9
-  return %8 : $()                                 // id: %9
-
-bb2:                                              // Preds: bb0
-  end_access %5 : $*Int                           // id: %10
-  unwind                                          // id: %11
-} // end sil function '$s4main7TeacherC3ageSivMZ'
-
-// Teacher.deinit
-sil hidden @$s4main7TeacherCfd : $@convention(method) (@guaranteed Teacher) -> @owned Builtin.NativeObject {
-// %0 "self"                                      // users: %2, %1
-bb0(%0 : $Teacher):
-  debug_value %0 : $Teacher, let, name "self", argno 1 // id: %1
-  %2 = unchecked_ref_cast %0 : $Teacher to $Builtin.NativeObject // user: %3
-  return %2 : $Builtin.NativeObject               // id: %3
-} // end sil function '$s4main7TeacherCfd'
-
-// Teacher.__deallocating_deinit
-sil hidden @$s4main7TeacherCfD : $@convention(method) (@owned Teacher) -> () {
-// %0 "self"                                      // users: %3, %1
-bb0(%0 : $Teacher):
-  debug_value %0 : $Teacher, let, name "self", argno 1 // id: %1
-  // function_ref Teacher.deinit
-  %2 = function_ref @$s4main7TeacherCfd : $@convention(method) (@guaranteed Teacher) -> @owned Builtin.NativeObject // user: %3
-  %3 = apply %2(%0) : $@convention(method) (@guaranteed Teacher) -> @owned Builtin.NativeObject // user: %4
-  %4 = unchecked_ref_cast %3 : $Builtin.NativeObject to $Teacher // user: %5
-  dealloc_ref %4 : $Teacher                       // id: %5
-  %6 = tuple ()                                   // user: %7
-  return %6 : $()                                 // id: %7
-} // end sil function '$s4main7TeacherCfD'
-
-// Teacher.__allocating_init()
-sil hidden [exact_self_class] @$s4main7TeacherCACycfC : $@convention(method) (@thick Teacher.Type) -> @owned Teacher {
-// %0 "$metatype"
-bb0(%0 : $@thick Teacher.Type):
-  %1 = alloc_ref $Teacher                         // user: %3
-  // function_ref Teacher.init()
-  %2 = function_ref @$s4main7TeacherCACycfc : $@convention(method) (@owned Teacher) -> @owned Teacher // user: %3
-  %3 = apply %2(%1) : $@convention(method) (@owned Teacher) -> @owned Teacher // user: %4
-  return %3 : $Teacher                            // id: %4
-} // end sil function '$s4main7TeacherCACycfC'
-
-// Teacher.init()
-sil hidden @$s4main7TeacherCACycfc : $@convention(method) (@owned Teacher) -> @owned Teacher {
-// %0 "self"                                      // users: %2, %1
-bb0(%0 : $Teacher):
-  debug_value %0 : $Teacher, let, name "self", argno 1 // id: %1
-  return %0 : $Teacher                            // id: %2
-} // end sil function '$s4main7TeacherCACycfc'
-
-sil_vtable Teacher {
-  #Teacher.init!allocator: (Teacher.Type) -> () -> Teacher : @$s4main7TeacherCACycfC	// Teacher.__allocating_init()
-  #Teacher.deinit!deallocator: @$s4main7TeacherCfD	// Teacher.__deallocating_deinit
-}
+// String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+sil [always_inline] [readonly] [_semantics "string.makeUTF8"] @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String
 
 
 
