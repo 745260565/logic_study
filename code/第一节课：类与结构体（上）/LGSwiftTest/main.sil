@@ -6,134 +6,414 @@ import SwiftShims
 
 import Foundation
 
-func addTwoInts(_ a: Int, _ b: Int) -> Int
-
-func addTwoInts(_ a: Double, _ b: Double) -> Double
-
-@_hasStorage @_hasInitialValue var m: (Double, Double) -> Double { get set }
-
-// m
-sil_global hidden @$s4main1myS2d_Sdtcvp : $@callee_guaranteed (Double, Double) -> Double
+func test()
 
 // main
 sil @main : $@convention(c) (Int32, UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>) -> Int32 {
 bb0(%0 : $Int32, %1 : $UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>):
-  alloc_global @$s4main1myS2d_Sdtcvp              // id: %2
-  %3 = global_addr @$s4main1myS2d_Sdtcvp : $*@callee_guaranteed (Double, Double) -> Double // users: %6, %13
-  // function_ref addTwoInts(_:_:)
-  %4 = function_ref @$s4main10addTwoIntsyS2d_SdtF : $@convention(thin) (Double, Double) -> Double // user: %5
-  %5 = thin_to_thick_function %4 : $@convention(thin) (Double, Double) -> Double to $@callee_guaranteed (Double, Double) -> Double // user: %6
-  store %5 to %3 : $*@callee_guaranteed (Double, Double) -> Double // id: %6
-  %7 = integer_literal $Builtin.Word, 1           // user: %9
-  // function_ref _allocateUninitializedArray<A>(_:)
-  %8 = function_ref @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %9
-  %9 = apply %8<Any>(%7) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %11, %10
-  %10 = tuple_extract %9 : $(Array<Any>, Builtin.RawPointer), 0 // user: %25
-  %11 = tuple_extract %9 : $(Array<Any>, Builtin.RawPointer), 1 // user: %12
-  %12 = pointer_to_address %11 : $Builtin.RawPointer to [strict] $*Any // user: %22
-  %13 = begin_access [read] [dynamic] %3 : $*@callee_guaranteed (Double, Double) -> Double // users: %14, %16
-  %14 = load %13 : $*@callee_guaranteed (Double, Double) -> Double // users: %26, %21, %15
-  strong_retain %14 : $@callee_guaranteed (Double, Double) -> Double // id: %15
-  end_access %13 : $*@callee_guaranteed (Double, Double) -> Double // id: %16
-  %17 = float_literal $Builtin.FPIEEE64, 0x4024000000000000 // 10 // user: %18
-  %18 = struct $Double (%17 : $Builtin.FPIEEE64)  // user: %21
-  %19 = float_literal $Builtin.FPIEEE64, 0x4034000000000000 // 20 // user: %20
-  %20 = struct $Double (%19 : $Builtin.FPIEEE64)  // user: %21
-  %21 = apply %14(%18, %20) : $@callee_guaranteed (Double, Double) -> Double // user: %23
-  %22 = init_existential_addr %12 : $*Any, $Double // user: %23
-  store %21 to %22 : $*Double                     // id: %23
-  // function_ref _finalizeUninitializedArray<A>(_:)
-  %24 = function_ref @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %25
-  %25 = apply %24<Any>(%10) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %35, %32
-  strong_release %14 : $@callee_guaranteed (Double, Double) -> Double // id: %26
-  // function_ref default argument 1 of print(_:separator:terminator:)
-  %27 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA0_ : $@convention(thin) () -> @owned String // user: %28
-  %28 = apply %27() : $@convention(thin) () -> @owned String // users: %34, %32
-  // function_ref default argument 2 of print(_:separator:terminator:)
-  %29 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA1_ : $@convention(thin) () -> @owned String // user: %30
-  %30 = apply %29() : $@convention(thin) () -> @owned String // users: %33, %32
-  // function_ref print(_:separator:terminator:)
-  %31 = function_ref @$ss5print_9separator10terminatoryypd_S2StF : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %32
-  %32 = apply %31(%25, %28, %30) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
-  release_value %30 : $String                     // id: %33
-  release_value %28 : $String                     // id: %34
-  release_value %25 : $Array<Any>                 // id: %35
-  %36 = integer_literal $Builtin.Int32, 0         // user: %37
-  %37 = struct $Int32 (%36 : $Builtin.Int32)      // user: %38
-  return %37 : $Int32                             // id: %38
+  // function_ref test()
+  %2 = function_ref @$s4main4testyyF : $@convention(thin) () -> () // user: %3
+  %3 = apply %2() : $@convention(thin) () -> ()
+  %4 = integer_literal $Builtin.Int32, 0          // user: %5
+  %5 = struct $Int32 (%4 : $Builtin.Int32)        // user: %6
+  return %5 : $Int32                              // id: %6
 } // end sil function 'main'
 
-// addTwoInts(_:_:)
-sil hidden @$s4main10addTwoIntsyS2i_SitF : $@convention(thin) (Int, Int) -> Int {
-// %0 "a"                                         // users: %4, %2
-// %1 "b"                                         // users: %5, %3
-bb0(%0 : $Int, %1 : $Int):
-  debug_value %0 : $Int, let, name "a", argno 1   // id: %2
-  debug_value %1 : $Int, let, name "b", argno 2   // id: %3
-  %4 = struct_extract %0 : $Int, #Int._value      // user: %7
-  %5 = struct_extract %1 : $Int, #Int._value      // user: %7
-  %6 = integer_literal $Builtin.Int1, -1          // user: %7
-  %7 = builtin "sadd_with_overflow_Int64"(%4 : $Builtin.Int64, %5 : $Builtin.Int64, %6 : $Builtin.Int1) : $(Builtin.Int64, Builtin.Int1) // users: %9, %8
-  %8 = tuple_extract %7 : $(Builtin.Int64, Builtin.Int1), 0 // user: %11
-  %9 = tuple_extract %7 : $(Builtin.Int64, Builtin.Int1), 1 // user: %10
-  cond_fail %9 : $Builtin.Int1, "arithmetic overflow" // id: %10
-  %11 = struct $Int (%8 : $Builtin.Int64)         // user: %12
-  return %11 : $Int                               // id: %12
-} // end sil function '$s4main10addTwoIntsyS2i_SitF'
+// test()
+sil hidden @$s4main4testyyF : $@convention(thin) () -> () {
+bb0:
+  %0 = alloc_stack $Int, var, name "i"            // users: %3, %158, %5, %8, %46, %116
+  %1 = integer_literal $Builtin.Int64, 1          // user: %2
+  %2 = struct $Int (%1 : $Builtin.Int64)          // user: %3
+  store %2 to %0 : $*Int                          // id: %3
+  // function_ref specialized closure #1 in test()
+  %4 = function_ref @$s4main4testyyFyycfU_Tf0s_n : $@convention(thin) (@inout_aliasable Int) -> () // user: %5
+  %5 = partial_apply [callee_guaranteed] %4(%0) : $@convention(thin) (@inout_aliasable Int) -> () // users: %157, %89, %88, %87, %6
+  debug_value %5 : $@callee_guaranteed () -> (), let, name "closure" // id: %6
+  %7 = integer_literal $Builtin.Int64, 1          // user: %12
+  %8 = begin_access [modify] [dynamic] %0 : $*Int // users: %17, %9, %19
+  %9 = struct_element_addr %8 : $*Int, #Int._value // user: %10
+  %10 = load %9 : $*Builtin.Int64                 // user: %12
+  %11 = integer_literal $Builtin.Int1, -1         // user: %12
+  %12 = builtin "sadd_with_overflow_Int64"(%10 : $Builtin.Int64, %7 : $Builtin.Int64, %11 : $Builtin.Int1) : $(Builtin.Int64, Builtin.Int1) // users: %14, %13
+  %13 = tuple_extract %12 : $(Builtin.Int64, Builtin.Int1), 0 // user: %16
+  %14 = tuple_extract %12 : $(Builtin.Int64, Builtin.Int1), 1 // user: %15
+  cond_fail %14 : $Builtin.Int1, "arithmetic overflow" // id: %15
+  %16 = struct $Int (%13 : $Builtin.Int64)        // user: %17
+  store %16 to %8 : $*Int                         // id: %17
+  %18 = tuple ()
+  end_access %8 : $*Int                           // id: %19
+  %20 = integer_literal $Builtin.Word, 1          // user: %22
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %21 = function_ref @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %22
+  %22 = apply %21<Any>(%20) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %24, %23
+  %23 = tuple_extract %22 : $(Array<Any>, Builtin.RawPointer), 0 // user: %77
+  %24 = tuple_extract %22 : $(Array<Any>, Builtin.RawPointer), 1 // user: %25
+  %25 = pointer_to_address %24 : $Builtin.RawPointer to [strict] $*Any // user: %74
+  %26 = alloc_stack $DefaultStringInterpolation, var, name "$interpolation" // users: %67, %34, %70, %69, %41, %51, %62
+  %27 = integer_literal $Builtin.Int64, 15        // user: %28
+  %28 = struct $Int (%27 : $Builtin.Int64)        // user: %33
+  %29 = integer_literal $Builtin.Int64, 1         // user: %30
+  %30 = struct $Int (%29 : $Builtin.Int64)        // user: %33
+  %31 = metatype $@thin DefaultStringInterpolation.Type // user: %33
+  // function_ref DefaultStringInterpolation.init(literalCapacity:interpolationCount:)
+  %32 = function_ref @$ss26DefaultStringInterpolationV15literalCapacity18interpolationCountABSi_SitcfC : $@convention(method) (Int, Int, @thin DefaultStringInterpolation.Type) -> @owned DefaultStringInterpolation // user: %33
+  %33 = apply %32(%28, %30, %31) : $@convention(method) (Int, Int, @thin DefaultStringInterpolation.Type) -> @owned DefaultStringInterpolation // user: %34
+  store %33 to %26 : $*DefaultStringInterpolation // id: %34
+  %35 = string_literal utf8 "before closure:"     // user: %40
+  %36 = integer_literal $Builtin.Word, 15         // user: %40
+  %37 = integer_literal $Builtin.Int1, -1         // user: %40
+  %38 = metatype $@thin String.Type               // user: %40
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %39 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %40
+  %40 = apply %39(%35, %36, %37, %38) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %45, %43
+  %41 = begin_access [modify] [static] %26 : $*DefaultStringInterpolation // users: %44, %43
+  // function_ref DefaultStringInterpolation.appendLiteral(_:)
+  %42 = function_ref @$ss26DefaultStringInterpolationV13appendLiteralyySSF : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> () // user: %43
+  %43 = apply %42(%40, %41) : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> ()
+  end_access %41 : $*DefaultStringInterpolation   // id: %44
+  release_value %40 : $String                     // id: %45
+  %46 = begin_access [read] [dynamic] %0 : $*Int  // users: %47, %48
+  %47 = load %46 : $*Int                          // user: %50
+  end_access %46 : $*Int                          // id: %48
+  %49 = alloc_stack $Int                          // users: %50, %55, %53
+  store %47 to %49 : $*Int                        // id: %50
+  %51 = begin_access [modify] [static] %26 : $*DefaultStringInterpolation // users: %54, %53
+  // function_ref DefaultStringInterpolation.appendInterpolation<A>(_:)
+  %52 = function_ref @$ss26DefaultStringInterpolationV06appendC0yyxs06CustomB11ConvertibleRzlF : $@convention(method) <τ_0_0 where τ_0_0 : CustomStringConvertible> (@in_guaranteed τ_0_0, @inout DefaultStringInterpolation) -> () // user: %53
+  %53 = apply %52<Int>(%49, %51) : $@convention(method) <τ_0_0 where τ_0_0 : CustomStringConvertible> (@in_guaranteed τ_0_0, @inout DefaultStringInterpolation) -> ()
+  end_access %51 : $*DefaultStringInterpolation   // id: %54
+  dealloc_stack %49 : $*Int                       // id: %55
+  %56 = string_literal utf8 ""                    // user: %61
+  %57 = integer_literal $Builtin.Word, 0          // user: %61
+  %58 = integer_literal $Builtin.Int1, -1         // user: %61
+  %59 = metatype $@thin String.Type               // user: %61
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %60 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %61
+  %61 = apply %60(%56, %57, %58, %59) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %66, %64
+  %62 = begin_access [modify] [static] %26 : $*DefaultStringInterpolation // users: %65, %64
+  // function_ref DefaultStringInterpolation.appendLiteral(_:)
+  %63 = function_ref @$ss26DefaultStringInterpolationV13appendLiteralyySSF : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> () // user: %64
+  %64 = apply %63(%61, %62) : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> ()
+  end_access %62 : $*DefaultStringInterpolation   // id: %65
+  release_value %61 : $String                     // id: %66
+  %67 = load %26 : $*DefaultStringInterpolation   // users: %73, %68
+  retain_value %67 : $DefaultStringInterpolation  // id: %68
+  destroy_addr %26 : $*DefaultStringInterpolation // id: %69
+  dealloc_stack %26 : $*DefaultStringInterpolation // id: %70
+  %71 = metatype $@thin String.Type               // user: %73
+  // function_ref String.init(stringInterpolation:)
+  %72 = function_ref @$sSS19stringInterpolationSSs013DefaultStringB0V_tcfC : $@convention(method) (@owned DefaultStringInterpolation, @thin String.Type) -> @owned String // user: %73
+  %73 = apply %72(%67, %71) : $@convention(method) (@owned DefaultStringInterpolation, @thin String.Type) -> @owned String // user: %75
+  %74 = init_existential_addr %25 : $*Any, $String // user: %75
+  store %73 to %74 : $*String                     // id: %75
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %76 = function_ref @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %77
+  %77 = apply %76<Any>(%23) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %86, %83
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %78 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA0_ : $@convention(thin) () -> @owned String // user: %79
+  %79 = apply %78() : $@convention(thin) () -> @owned String // users: %85, %83
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %80 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA1_ : $@convention(thin) () -> @owned String // user: %81
+  %81 = apply %80() : $@convention(thin) () -> @owned String // users: %84, %83
+  // function_ref print(_:separator:terminator:)
+  %82 = function_ref @$ss5print_9separator10terminatoryypd_S2StF : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %83
+  %83 = apply %82(%77, %79, %81) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+  release_value %81 : $String                     // id: %84
+  release_value %79 : $String                     // id: %85
+  release_value %77 : $Array<Any>                 // id: %86
+  strong_retain %5 : $@callee_guaranteed () -> () // id: %87
+  %88 = apply %5() : $@callee_guaranteed () -> ()
+  strong_release %5 : $@callee_guaranteed () -> () // id: %89
+  %90 = integer_literal $Builtin.Word, 1          // user: %92
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %91 = function_ref @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %92
+  %92 = apply %91<Any>(%90) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %94, %93
+  %93 = tuple_extract %92 : $(Array<Any>, Builtin.RawPointer), 0 // user: %147
+  %94 = tuple_extract %92 : $(Array<Any>, Builtin.RawPointer), 1 // user: %95
+  %95 = pointer_to_address %94 : $Builtin.RawPointer to [strict] $*Any // user: %144
+  %96 = alloc_stack $DefaultStringInterpolation, var, name "$interpolation" // users: %137, %104, %140, %139, %111, %121, %132
+  %97 = integer_literal $Builtin.Int64, 14        // user: %98
+  %98 = struct $Int (%97 : $Builtin.Int64)        // user: %103
+  %99 = integer_literal $Builtin.Int64, 1         // user: %100
+  %100 = struct $Int (%99 : $Builtin.Int64)       // user: %103
+  %101 = metatype $@thin DefaultStringInterpolation.Type // user: %103
+  // function_ref DefaultStringInterpolation.init(literalCapacity:interpolationCount:)
+  %102 = function_ref @$ss26DefaultStringInterpolationV15literalCapacity18interpolationCountABSi_SitcfC : $@convention(method) (Int, Int, @thin DefaultStringInterpolation.Type) -> @owned DefaultStringInterpolation // user: %103
+  %103 = apply %102(%98, %100, %101) : $@convention(method) (Int, Int, @thin DefaultStringInterpolation.Type) -> @owned DefaultStringInterpolation // user: %104
+  store %103 to %96 : $*DefaultStringInterpolation // id: %104
+  %105 = string_literal utf8 "after closure:"     // user: %110
+  %106 = integer_literal $Builtin.Word, 14        // user: %110
+  %107 = integer_literal $Builtin.Int1, -1        // user: %110
+  %108 = metatype $@thin String.Type              // user: %110
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %109 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %110
+  %110 = apply %109(%105, %106, %107, %108) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %115, %113
+  %111 = begin_access [modify] [static] %96 : $*DefaultStringInterpolation // users: %114, %113
+  // function_ref DefaultStringInterpolation.appendLiteral(_:)
+  %112 = function_ref @$ss26DefaultStringInterpolationV13appendLiteralyySSF : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> () // user: %113
+  %113 = apply %112(%110, %111) : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> ()
+  end_access %111 : $*DefaultStringInterpolation  // id: %114
+  release_value %110 : $String                    // id: %115
+  %116 = begin_access [read] [dynamic] %0 : $*Int // users: %117, %118
+  %117 = load %116 : $*Int                        // user: %120
+  end_access %116 : $*Int                         // id: %118
+  %119 = alloc_stack $Int                         // users: %120, %125, %123
+  store %117 to %119 : $*Int                      // id: %120
+  %121 = begin_access [modify] [static] %96 : $*DefaultStringInterpolation // users: %124, %123
+  // function_ref DefaultStringInterpolation.appendInterpolation<A>(_:)
+  %122 = function_ref @$ss26DefaultStringInterpolationV06appendC0yyxs06CustomB11ConvertibleRzlF : $@convention(method) <τ_0_0 where τ_0_0 : CustomStringConvertible> (@in_guaranteed τ_0_0, @inout DefaultStringInterpolation) -> () // user: %123
+  %123 = apply %122<Int>(%119, %121) : $@convention(method) <τ_0_0 where τ_0_0 : CustomStringConvertible> (@in_guaranteed τ_0_0, @inout DefaultStringInterpolation) -> ()
+  end_access %121 : $*DefaultStringInterpolation  // id: %124
+  dealloc_stack %119 : $*Int                      // id: %125
+  %126 = string_literal utf8 ""                   // user: %131
+  %127 = integer_literal $Builtin.Word, 0         // user: %131
+  %128 = integer_literal $Builtin.Int1, -1        // user: %131
+  %129 = metatype $@thin String.Type              // user: %131
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %130 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %131
+  %131 = apply %130(%126, %127, %128, %129) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %136, %134
+  %132 = begin_access [modify] [static] %96 : $*DefaultStringInterpolation // users: %135, %134
+  // function_ref DefaultStringInterpolation.appendLiteral(_:)
+  %133 = function_ref @$ss26DefaultStringInterpolationV13appendLiteralyySSF : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> () // user: %134
+  %134 = apply %133(%131, %132) : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> ()
+  end_access %132 : $*DefaultStringInterpolation  // id: %135
+  release_value %131 : $String                    // id: %136
+  %137 = load %96 : $*DefaultStringInterpolation  // users: %143, %138
+  retain_value %137 : $DefaultStringInterpolation // id: %138
+  destroy_addr %96 : $*DefaultStringInterpolation // id: %139
+  dealloc_stack %96 : $*DefaultStringInterpolation // id: %140
+  %141 = metatype $@thin String.Type              // user: %143
+  // function_ref String.init(stringInterpolation:)
+  %142 = function_ref @$sSS19stringInterpolationSSs013DefaultStringB0V_tcfC : $@convention(method) (@owned DefaultStringInterpolation, @thin String.Type) -> @owned String // user: %143
+  %143 = apply %142(%137, %141) : $@convention(method) (@owned DefaultStringInterpolation, @thin String.Type) -> @owned String // user: %145
+  %144 = init_existential_addr %95 : $*Any, $String // user: %145
+  store %143 to %144 : $*String                   // id: %145
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %146 = function_ref @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %147
+  %147 = apply %146<Any>(%93) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %156, %153
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %148 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA0_ : $@convention(thin) () -> @owned String // user: %149
+  %149 = apply %148() : $@convention(thin) () -> @owned String // users: %155, %153
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %150 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA1_ : $@convention(thin) () -> @owned String // user: %151
+  %151 = apply %150() : $@convention(thin) () -> @owned String // users: %154, %153
+  // function_ref print(_:separator:terminator:)
+  %152 = function_ref @$ss5print_9separator10terminatoryypd_S2StF : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %153
+  %153 = apply %152(%147, %149, %151) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+  release_value %151 : $String                    // id: %154
+  release_value %149 : $String                    // id: %155
+  release_value %147 : $Array<Any>                // id: %156
+  strong_release %5 : $@callee_guaranteed () -> () // id: %157
+  dealloc_stack %0 : $*Int                        // id: %158
+  %159 = tuple ()                                 // user: %160
+  return %159 : $()                               // id: %160
+} // end sil function '$s4main4testyyF'
 
-// static Int.+ infix(_:_:)
-sil public_external [transparent] @$sSi1poiyS2i_SitFZ : $@convention(method) (Int, Int, @thin Int.Type) -> Int {
-// %0                                             // user: %3
-// %1                                             // user: %4
-bb0(%0 : $Int, %1 : $Int, %2 : $@thin Int.Type):
-  %3 = struct_extract %0 : $Int, #Int._value      // user: %6
-  %4 = struct_extract %1 : $Int, #Int._value      // user: %6
-  %5 = integer_literal $Builtin.Int1, -1          // user: %6
-  %6 = builtin "sadd_with_overflow_Int64"(%3 : $Builtin.Int64, %4 : $Builtin.Int64, %5 : $Builtin.Int1) : $(Builtin.Int64, Builtin.Int1) // users: %8, %7
-  %7 = tuple_extract %6 : $(Builtin.Int64, Builtin.Int1), 0 // user: %10
-  %8 = tuple_extract %6 : $(Builtin.Int64, Builtin.Int1), 1 // user: %9
-  cond_fail %8 : $Builtin.Int1, "arithmetic overflow" // id: %9
-  %10 = struct $Int (%7 : $Builtin.Int64)         // user: %11
-  return %10 : $Int                               // id: %11
-} // end sil function '$sSi1poiyS2i_SitFZ'
+// Int.init(_builtinIntegerLiteral:)
+sil public_external [transparent] @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int {
+// %0                                             // user: %2
+bb0(%0 : $Builtin.IntLiteral, %1 : $@thin Int.Type):
+  %2 = builtin "s_to_s_checked_trunc_IntLiteral_Int64"(%0 : $Builtin.IntLiteral) : $(Builtin.Int64, Builtin.Int1) // user: %3
+  %3 = tuple_extract %2 : $(Builtin.Int64, Builtin.Int1), 0 // user: %4
+  %4 = struct $Int (%3 : $Builtin.Int64)          // user: %5
+  return %4 : $Int                                // id: %5
+} // end sil function '$sSi22_builtinIntegerLiteralSiBI_tcfC'
 
-// addTwoInts(_:_:)
-sil hidden @$s4main10addTwoIntsyS2d_SdtF : $@convention(thin) (Double, Double) -> Double {
-// %0 "a"                                         // users: %4, %2
-// %1 "b"                                         // users: %5, %3
-bb0(%0 : $Double, %1 : $Double):
-  debug_value %0 : $Double, let, name "a", argno 1 // id: %2
-  debug_value %1 : $Double, let, name "b", argno 2 // id: %3
-  %4 = struct_extract %0 : $Double, #Double._value // user: %6
-  %5 = struct_extract %1 : $Double, #Double._value // user: %6
-  %6 = builtin "fadd_FPIEEE64"(%4 : $Builtin.FPIEEE64, %5 : $Builtin.FPIEEE64) : $Builtin.FPIEEE64 // user: %7
-  %7 = struct $Double (%6 : $Builtin.FPIEEE64)    // user: %8
-  return %7 : $Double                             // id: %8
-} // end sil function '$s4main10addTwoIntsyS2d_SdtF'
+// specialized closure #1 in test()
+sil private @$s4main4testyyFyycfU_Tf0s_n : $@convention(thin) (@inout_aliasable Int) -> () {
+// %0 "i"                                         // users: %28, %1
+bb0(%0 : $*Int):
+  debug_value_addr %0 : $*Int, var, name "i", argno 1 // id: %1
+  %2 = integer_literal $Builtin.Word, 1           // user: %4
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %3 = function_ref @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %4
+  %4 = apply %3<Any>(%2) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %6, %5
+  %5 = tuple_extract %4 : $(Array<Any>, Builtin.RawPointer), 0 // user: %59
+  %6 = tuple_extract %4 : $(Array<Any>, Builtin.RawPointer), 1 // user: %7
+  %7 = pointer_to_address %6 : $Builtin.RawPointer to [strict] $*Any // user: %56
+  %8 = alloc_stack $DefaultStringInterpolation, var, name "$interpolation" // users: %49, %16, %52, %51, %44, %33, %23
+  %9 = integer_literal $Builtin.Int64, 8          // user: %10
+  %10 = struct $Int (%9 : $Builtin.Int64)         // user: %15
+  %11 = integer_literal $Builtin.Int64, 1         // user: %12
+  %12 = struct $Int (%11 : $Builtin.Int64)        // user: %15
+  %13 = metatype $@thin DefaultStringInterpolation.Type // user: %15
+  // function_ref DefaultStringInterpolation.init(literalCapacity:interpolationCount:)
+  %14 = function_ref @$ss26DefaultStringInterpolationV15literalCapacity18interpolationCountABSi_SitcfC : $@convention(method) (Int, Int, @thin DefaultStringInterpolation.Type) -> @owned DefaultStringInterpolation // user: %15
+  %15 = apply %14(%10, %12, %13) : $@convention(method) (Int, Int, @thin DefaultStringInterpolation.Type) -> @owned DefaultStringInterpolation // user: %16
+  store %15 to %8 : $*DefaultStringInterpolation  // id: %16
+  %17 = string_literal utf8 "closure:"            // user: %22
+  %18 = integer_literal $Builtin.Word, 8          // user: %22
+  %19 = integer_literal $Builtin.Int1, -1         // user: %22
+  %20 = metatype $@thin String.Type               // user: %22
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %21 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %22
+  %22 = apply %21(%17, %18, %19, %20) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %27, %25
+  %23 = begin_access [modify] [static] %8 : $*DefaultStringInterpolation // users: %26, %25
+  // function_ref DefaultStringInterpolation.appendLiteral(_:)
+  %24 = function_ref @$ss26DefaultStringInterpolationV13appendLiteralyySSF : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> () // user: %25
+  %25 = apply %24(%22, %23) : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> ()
+  end_access %23 : $*DefaultStringInterpolation   // id: %26
+  release_value %22 : $String                     // id: %27
+  %28 = begin_access [read] [dynamic] %0 : $*Int  // users: %29, %30
+  %29 = load %28 : $*Int                          // user: %32
+  end_access %28 : $*Int                          // id: %30
+  %31 = alloc_stack $Int                          // users: %32, %37, %35
+  store %29 to %31 : $*Int                        // id: %32
+  %33 = begin_access [modify] [static] %8 : $*DefaultStringInterpolation // users: %36, %35
+  // function_ref DefaultStringInterpolation.appendInterpolation<A>(_:)
+  %34 = function_ref @$ss26DefaultStringInterpolationV06appendC0yyxs06CustomB11ConvertibleRzlF : $@convention(method) <τ_0_0 where τ_0_0 : CustomStringConvertible> (@in_guaranteed τ_0_0, @inout DefaultStringInterpolation) -> () // user: %35
+  %35 = apply %34<Int>(%31, %33) : $@convention(method) <τ_0_0 where τ_0_0 : CustomStringConvertible> (@in_guaranteed τ_0_0, @inout DefaultStringInterpolation) -> ()
+  end_access %33 : $*DefaultStringInterpolation   // id: %36
+  dealloc_stack %31 : $*Int                       // id: %37
+  %38 = string_literal utf8 ""                    // user: %43
+  %39 = integer_literal $Builtin.Word, 0          // user: %43
+  %40 = integer_literal $Builtin.Int1, -1         // user: %43
+  %41 = metatype $@thin String.Type               // user: %43
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %42 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %43
+  %43 = apply %42(%38, %39, %40, %41) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %48, %46
+  %44 = begin_access [modify] [static] %8 : $*DefaultStringInterpolation // users: %47, %46
+  // function_ref DefaultStringInterpolation.appendLiteral(_:)
+  %45 = function_ref @$ss26DefaultStringInterpolationV13appendLiteralyySSF : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> () // user: %46
+  %46 = apply %45(%43, %44) : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> ()
+  end_access %44 : $*DefaultStringInterpolation   // id: %47
+  release_value %43 : $String                     // id: %48
+  %49 = load %8 : $*DefaultStringInterpolation    // users: %55, %50
+  retain_value %49 : $DefaultStringInterpolation  // id: %50
+  destroy_addr %8 : $*DefaultStringInterpolation  // id: %51
+  dealloc_stack %8 : $*DefaultStringInterpolation // id: %52
+  %53 = metatype $@thin String.Type               // user: %55
+  // function_ref String.init(stringInterpolation:)
+  %54 = function_ref @$sSS19stringInterpolationSSs013DefaultStringB0V_tcfC : $@convention(method) (@owned DefaultStringInterpolation, @thin String.Type) -> @owned String // user: %55
+  %55 = apply %54(%49, %53) : $@convention(method) (@owned DefaultStringInterpolation, @thin String.Type) -> @owned String // user: %57
+  %56 = init_existential_addr %7 : $*Any, $String // user: %57
+  store %55 to %56 : $*String                     // id: %57
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %58 = function_ref @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %59
+  %59 = apply %58<Any>(%5) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %68, %65
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %60 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA0_ : $@convention(thin) () -> @owned String // user: %61
+  %61 = apply %60() : $@convention(thin) () -> @owned String // users: %67, %65
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %62 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA1_ : $@convention(thin) () -> @owned String // user: %63
+  %63 = apply %62() : $@convention(thin) () -> @owned String // users: %66, %65
+  // function_ref print(_:separator:terminator:)
+  %64 = function_ref @$ss5print_9separator10terminatoryypd_S2StF : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %65
+  %65 = apply %64(%59, %61, %63) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+  release_value %63 : $String                     // id: %66
+  release_value %61 : $String                     // id: %67
+  release_value %59 : $Array<Any>                 // id: %68
+  %69 = tuple ()                                  // user: %70
+  return %69 : $()                                // id: %70
+} // end sil function '$s4main4testyyFyycfU_Tf0s_n'
 
-// static Double.+ infix(_:_:)
-sil public_external [transparent] @$sSd1poiyS2d_SdtFZ : $@convention(method) (Double, Double, @thin Double.Type) -> Double {
-// %0                                             // user: %3
-// %1                                             // user: %4
-bb0(%0 : $Double, %1 : $Double, %2 : $@thin Double.Type):
-  %3 = struct_extract %0 : $Double, #Double._value // user: %5
-  %4 = struct_extract %1 : $Double, #Double._value // user: %5
-  %5 = builtin "fadd_FPIEEE64"(%3 : $Builtin.FPIEEE64, %4 : $Builtin.FPIEEE64) : $Builtin.FPIEEE64 // user: %6
-  %6 = struct $Double (%5 : $Builtin.FPIEEE64)    // user: %7
-  return %6 : $Double                             // id: %7
-} // end sil function '$sSd1poiyS2d_SdtFZ'
+// closure #1 in test()
+sil private @$s4main4testyyFyycfU_ : $@convention(thin) (@guaranteed { var Int }) -> () {
+// %0 "i"                                         // user: %1
+bb0(%0 : ${ var Int }):
+  %1 = project_box %0 : ${ var Int }, 0           // users: %29, %2
+  debug_value_addr %1 : $*Int, var, name "i", argno 1 // id: %2
+  %3 = integer_literal $Builtin.Word, 1           // user: %5
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %4 = function_ref @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %5
+  %5 = apply %4<Any>(%3) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %7, %6
+  %6 = tuple_extract %5 : $(Array<Any>, Builtin.RawPointer), 0 // user: %60
+  %7 = tuple_extract %5 : $(Array<Any>, Builtin.RawPointer), 1 // user: %8
+  %8 = pointer_to_address %7 : $Builtin.RawPointer to [strict] $*Any // user: %57
+  %9 = alloc_stack $DefaultStringInterpolation, var, name "$interpolation" // users: %50, %17, %53, %52, %24, %34, %45
+  %10 = integer_literal $Builtin.Int64, 8         // user: %11
+  %11 = struct $Int (%10 : $Builtin.Int64)        // user: %16
+  %12 = integer_literal $Builtin.Int64, 1         // user: %13
+  %13 = struct $Int (%12 : $Builtin.Int64)        // user: %16
+  %14 = metatype $@thin DefaultStringInterpolation.Type // user: %16
+  // function_ref DefaultStringInterpolation.init(literalCapacity:interpolationCount:)
+  %15 = function_ref @$ss26DefaultStringInterpolationV15literalCapacity18interpolationCountABSi_SitcfC : $@convention(method) (Int, Int, @thin DefaultStringInterpolation.Type) -> @owned DefaultStringInterpolation // user: %16
+  %16 = apply %15(%11, %13, %14) : $@convention(method) (Int, Int, @thin DefaultStringInterpolation.Type) -> @owned DefaultStringInterpolation // user: %17
+  store %16 to %9 : $*DefaultStringInterpolation  // id: %17
+  %18 = string_literal utf8 "closure:"            // user: %23
+  %19 = integer_literal $Builtin.Word, 8          // user: %23
+  %20 = integer_literal $Builtin.Int1, -1         // user: %23
+  %21 = metatype $@thin String.Type               // user: %23
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %22 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %23
+  %23 = apply %22(%18, %19, %20, %21) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %28, %26
+  %24 = begin_access [modify] [static] %9 : $*DefaultStringInterpolation // users: %27, %26
+  // function_ref DefaultStringInterpolation.appendLiteral(_:)
+  %25 = function_ref @$ss26DefaultStringInterpolationV13appendLiteralyySSF : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> () // user: %26
+  %26 = apply %25(%23, %24) : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> ()
+  end_access %24 : $*DefaultStringInterpolation   // id: %27
+  release_value %23 : $String                     // id: %28
+  %29 = begin_access [read] [dynamic] %1 : $*Int  // users: %30, %31
+  %30 = load %29 : $*Int                          // user: %33
+  end_access %29 : $*Int                          // id: %31
+  %32 = alloc_stack $Int                          // users: %33, %38, %36
+  store %30 to %32 : $*Int                        // id: %33
+  %34 = begin_access [modify] [static] %9 : $*DefaultStringInterpolation // users: %37, %36
+  // function_ref DefaultStringInterpolation.appendInterpolation<A>(_:)
+  %35 = function_ref @$ss26DefaultStringInterpolationV06appendC0yyxs06CustomB11ConvertibleRzlF : $@convention(method) <τ_0_0 where τ_0_0 : CustomStringConvertible> (@in_guaranteed τ_0_0, @inout DefaultStringInterpolation) -> () // user: %36
+  %36 = apply %35<Int>(%32, %34) : $@convention(method) <τ_0_0 where τ_0_0 : CustomStringConvertible> (@in_guaranteed τ_0_0, @inout DefaultStringInterpolation) -> ()
+  end_access %34 : $*DefaultStringInterpolation   // id: %37
+  dealloc_stack %32 : $*Int                       // id: %38
+  %39 = string_literal utf8 ""                    // user: %44
+  %40 = integer_literal $Builtin.Word, 0          // user: %44
+  %41 = integer_literal $Builtin.Int1, -1         // user: %44
+  %42 = metatype $@thin String.Type               // user: %44
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %43 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %44
+  %44 = apply %43(%39, %40, %41, %42) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %49, %47
+  %45 = begin_access [modify] [static] %9 : $*DefaultStringInterpolation // users: %48, %47
+  // function_ref DefaultStringInterpolation.appendLiteral(_:)
+  %46 = function_ref @$ss26DefaultStringInterpolationV13appendLiteralyySSF : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> () // user: %47
+  %47 = apply %46(%44, %45) : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> ()
+  end_access %45 : $*DefaultStringInterpolation   // id: %48
+  release_value %44 : $String                     // id: %49
+  %50 = load %9 : $*DefaultStringInterpolation    // users: %56, %51
+  retain_value %50 : $DefaultStringInterpolation  // id: %51
+  destroy_addr %9 : $*DefaultStringInterpolation  // id: %52
+  dealloc_stack %9 : $*DefaultStringInterpolation // id: %53
+  %54 = metatype $@thin String.Type               // user: %56
+  // function_ref String.init(stringInterpolation:)
+  %55 = function_ref @$sSS19stringInterpolationSSs013DefaultStringB0V_tcfC : $@convention(method) (@owned DefaultStringInterpolation, @thin String.Type) -> @owned String // user: %56
+  %56 = apply %55(%50, %54) : $@convention(method) (@owned DefaultStringInterpolation, @thin String.Type) -> @owned String // user: %58
+  %57 = init_existential_addr %8 : $*Any, $String // user: %58
+  store %56 to %57 : $*String                     // id: %58
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %59 = function_ref @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %60
+  %60 = apply %59<Any>(%6) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %69, %66
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %61 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA0_ : $@convention(thin) () -> @owned String // user: %62
+  %62 = apply %61() : $@convention(thin) () -> @owned String // users: %68, %66
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %63 = function_ref @$ss5print_9separator10terminatoryypd_S2StFfA1_ : $@convention(thin) () -> @owned String // user: %64
+  %64 = apply %63() : $@convention(thin) () -> @owned String // users: %67, %66
+  // function_ref print(_:separator:terminator:)
+  %65 = function_ref @$ss5print_9separator10terminatoryypd_S2StF : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %66
+  %66 = apply %65(%60, %62, %64) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+  release_value %64 : $String                     // id: %67
+  release_value %62 : $String                     // id: %68
+  release_value %60 : $Array<Any>                 // id: %69
+  %70 = tuple ()                                  // user: %71
+  return %70 : $()                                // id: %71
+} // end sil function '$s4main4testyyFyycfU_'
 
 // _allocateUninitializedArray<A>(_:)
 sil [always_inline] [_semantics "array.uninitialized_intrinsic"] @$ss27_allocateUninitializedArrayySayxG_BptBwlF : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer)
 
-// Double.init(_builtinIntegerLiteral:)
-sil public_external [transparent] @$sSd22_builtinIntegerLiteralSdBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Double.Type) -> Double {
-// %0                                             // user: %2
-bb0(%0 : $Builtin.IntLiteral, %1 : $@thin Double.Type):
-  %2 = builtin "itofp_with_overflow_IntLiteral_FPIEEE64"(%0 : $Builtin.IntLiteral) : $Builtin.FPIEEE64 // user: %3
-  %3 = struct $Double (%2 : $Builtin.FPIEEE64)    // user: %4
-  return %3 : $Double                             // id: %4
-} // end sil function '$sSd22_builtinIntegerLiteralSdBI_tcfC'
+// DefaultStringInterpolation.init(literalCapacity:interpolationCount:)
+sil @$ss26DefaultStringInterpolationV15literalCapacity18interpolationCountABSi_SitcfC : $@convention(method) (Int, Int, @thin DefaultStringInterpolation.Type) -> @owned DefaultStringInterpolation
+
+// String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+sil [always_inline] [readonly] [_semantics "string.makeUTF8"] @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String
+
+// DefaultStringInterpolation.appendLiteral(_:)
+sil @$ss26DefaultStringInterpolationV13appendLiteralyySSF : $@convention(method) (@guaranteed String, @inout DefaultStringInterpolation) -> ()
+
+// DefaultStringInterpolation.appendInterpolation<A>(_:)
+sil @$ss26DefaultStringInterpolationV06appendC0yyxs06CustomB11ConvertibleRzlF : $@convention(method) <τ_0_0 where τ_0_0 : CustomStringConvertible> (@in_guaranteed τ_0_0, @inout DefaultStringInterpolation) -> ()
+
+// String.init(stringInterpolation:)
+sil [readonly] @$sSS19stringInterpolationSSs013DefaultStringB0V_tcfC : $@convention(method) (@owned DefaultStringInterpolation, @thin String.Type) -> @owned String
 
 // _finalizeUninitializedArray<A>(_:)
 sil shared_external [readnone] [_semantics "array.finalize_intrinsic"] @$ss27_finalizeUninitializedArrayySayxGABnlF : $@convention(thin) <Element> (@owned Array<Element>) -> @owned Array<Element> {
@@ -178,6 +458,25 @@ bb0:
 // print(_:separator:terminator:)
 sil @$ss5print_9separator10terminatoryypd_S2StF : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
 
+// static Int.+= infix(_:_:)
+sil public_external [transparent] @$sSi2peoiyySiz_SitFZ : $@convention(method) (@inout Int, Int, @thin Int.Type) -> () {
+// %0                                             // users: %12, %3
+// %1                                             // user: %5
+bb0(%0 : $*Int, %1 : $Int, %2 : $@thin Int.Type):
+  %3 = struct_element_addr %0 : $*Int, #Int._value // user: %4
+  %4 = load %3 : $*Builtin.Int64                  // user: %7
+  %5 = struct_extract %1 : $Int, #Int._value      // user: %7
+  %6 = integer_literal $Builtin.Int1, -1          // user: %7
+  %7 = builtin "sadd_with_overflow_Int64"(%4 : $Builtin.Int64, %5 : $Builtin.Int64, %6 : $Builtin.Int1) : $(Builtin.Int64, Builtin.Int1) // users: %9, %8
+  %8 = tuple_extract %7 : $(Builtin.Int64, Builtin.Int1), 0 // user: %11
+  %9 = tuple_extract %7 : $(Builtin.Int64, Builtin.Int1), 1 // user: %10
+  cond_fail %9 : $Builtin.Int1, "arithmetic overflow" // id: %10
+  %11 = struct $Int (%8 : $Builtin.Int64)         // user: %12
+  store %11 to %0 : $*Int                         // id: %12
+  %13 = tuple ()                                  // user: %14
+  return %13 : $()                                // id: %14
+} // end sil function '$sSi2peoiyySiz_SitFZ'
+
 // Array._endMutation()
 sil shared_external [_semantics "array.end_mutation"] @$sSa12_endMutationyyF : $@convention(method) <Element> (@inout Array<Element>) -> () {
 // %0                                             // users: %9, %1
@@ -195,12 +494,9 @@ bb0(%0 : $*Array<Element>):
   return %10 : $()                                // id: %11
 } // end sil function '$sSa12_endMutationyyF'
 
-// String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
-sil [always_inline] [readonly] [_semantics "string.makeUTF8"] @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String
-
 
 
 // Mappings from '#fileID' to '#filePath':
-//   'main/main.swift' => '/Users/chenghao/developer/logic_study/code/第一节课：类与结构体（上）/LGSwiftTest/LGSwiftTest/main.swift'
+//   'main/main.swift' => '/Users/chenghao/Developer/logic_study/code/第一节课：类与结构体（上）/LGSwiftTest/LGSwiftTest/main.swift'
 
 
