@@ -7,30 +7,13 @@
 
 import Foundation
 
-//func addTwoInts(_ a: Int, _ b: Int) -> Int{
-//    return a + b
-//}
-//
-//func addTwoInts(_ a: Double, _ b: Double) -> Double{
-//    return a + b
-//}
-
-
-//闭包本质：
-//闭包本质是一个结构体，数据结构是:闭包的执行地址+捕获变量堆空间的地址
-struct ClosureData<Box>{
-    var unkown: UnsafeRawPointer
-    var object: HeapObject<Box>
+var empty = "程浩"
+withUnsafePointer(to: &empty){
+    print($0)
 }
+print(empty.count)
 
-struct HeapObject{
-    var metadata: UnsafeRawPointer
-    var refcount1: Int32
-    var refcount2: Int32
-}
-
-struct Box<T>{
-    var object:HeapObject
-    var value: T
-}
-
+var str = "adskl"
+print(str.index(str.startIndex, offsetBy: 1))
+print(str[1])
+print(empty)
