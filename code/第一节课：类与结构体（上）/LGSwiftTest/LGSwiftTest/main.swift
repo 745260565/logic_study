@@ -15,5 +15,4 @@ print(empty.count)
 
 var str = "adskl"
 print(str.index(str.startIndex, offsetBy: 1))
-print(str[1])
 print(empty)
