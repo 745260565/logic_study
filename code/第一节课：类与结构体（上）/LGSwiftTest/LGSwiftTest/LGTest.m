@@ -8,20 +8,13 @@
 #import "LGTest.h"
 #import "LGSwiftTest-Swift.h"
 
-
-
 @implementation LGTest
-//
-//+(void)load{
-//    NSLog(@"%ld",(long)LogSeverityInfo);
-//}
 
-- (id)initWithCoder: (NSCoder *)coder {
-  return [super init];
-}
-
-- (void)test{
-//    NSLog(@"%ld",);
++ (void)testBlockCall:(ResultBlock)block{
+        
+    NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:400 userInfo:nil];
+    block(error);
 }
 
 @end
+

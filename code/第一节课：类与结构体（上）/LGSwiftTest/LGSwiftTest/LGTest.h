@@ -9,11 +9,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-const int value1 = 18;
+typedef void(^ResultBlock)(NSError *error);
 
 @interface LGTest : NSObject
 
-
++ (void)testBlockCall:(ResultBlock)block;
 
 @end
 
