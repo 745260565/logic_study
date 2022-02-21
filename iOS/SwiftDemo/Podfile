@@ -30,5 +30,6 @@ target 'SwiftDemo' do
   pod 'StreamingKit' # 播放网络音频
   pod 'Alamofire' # 网络请求
   pod 'KakaJSON' # 字典转模型
+  pod 'SnapKitExtend'
 
 end

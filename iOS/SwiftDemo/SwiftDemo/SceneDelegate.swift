@@ -12,6 +12,7 @@ import SwiftMessages
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var esTabBarController: ESTabBarController?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -28,9 +29,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let myVC = ViewController()
 //        let NavigationController = UINavigationController(rootViewController: myVC)
         
-        let esTabBarController = setupTabbar(delegate: self as? UITabBarControllerDelegate)
+        esTabBarController = setupTabbar(delegate: self as? UITabBarControllerDelegate)
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = UIColor.systemBackground
+//        if UserDefaults.standard.object(forKey: "firstValue") == nil {
+//            addUserNegotiateView()
+//        } else {
+//            window?.rootViewController = esTabBarController
+//        }
         window?.rootViewController = esTabBarController
 //        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
@@ -49,6 +55,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.rootViewController = tabBar
 //        window?.makeKeyAndVisible()
         
+    }
+    
+    func addUserNegotiateView() {
+        let alertView = EULAView(frame: window!.bounds)
+        window!.addSubview(alertView)
+        alertView.selectedData = { [self] s in
+            if s {
+                window?.rootViewController = esTabBarController
+            } else {
+                print("不同意")
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

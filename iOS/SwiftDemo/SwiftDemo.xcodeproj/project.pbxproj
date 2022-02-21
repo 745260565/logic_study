@@ -29,6 +29,7 @@
 		6A17816B26676CCA00A1E0D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A17816926676CCA00A1E0D9 /* LaunchScreen.storyboard */; };
 		6A17817626677BC200A1E0D9 /* KAlldefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A17817526677BC200A1E0D9 /* KAlldefine.swift */; };
 		6A1B078F278D54E800499575 /* LGMirriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B078E278D54E800499575 /* LGMirriorViewController.swift */; };
+		6A3040BF27BE38AB007D3141 /* EULAAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3040BE27BE38AB007D3141 /* EULAAlertView.swift */; };
 		6A43D6D426E1FC010055015A /* BHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43D6D326E1FC010055015A /* BHomeViewController.swift */; };
 		6A43D6D726E1FC370055015A /* BMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43D6D626E1FC370055015A /* BMineViewController.swift */; };
 		6A43D6ED26E2125A0055015A /* TableView1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43D6EC26E2125A0055015A /* TableView1ViewController.swift */; };
@@ -91,6 +92,7 @@
 		6A17816C26676CCA00A1E0D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A17817526677BC200A1E0D9 /* KAlldefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAlldefine.swift; sourceTree = "<group>"; };
 		6A1B078E278D54E800499575 /* LGMirriorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGMirriorViewController.swift; sourceTree = "<group>"; };
+		6A3040BE27BE38AB007D3141 /* EULAAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EULAAlertView.swift; sourceTree = "<group>"; };
 		6A43D6D326E1FC010055015A /* BHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BHomeViewController.swift; sourceTree = "<group>"; };
 		6A43D6D626E1FC370055015A /* BMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMineViewController.swift; sourceTree = "<group>"; };
 		6A43D6EC26E2125A0055015A /* TableView1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView1ViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		6A17815D26676CC800A1E0D9 /* SwiftDemo */ = {
 			isa = PBXGroup;
 			children = (
+				6A3040BE27BE38AB007D3141 /* EULAAlertView.swift */,
 				6A776EF72668758600563417 /* Assets.xcassets */,
 				6A17815E26676CC800A1E0D9 /* AppDelegate.swift */,
 				6A17816026676CC800A1E0D9 /* SceneDelegate.swift */,
@@ -609,6 +612,7 @@
 				6A17816126676CC800A1E0D9 /* SceneDelegate.swift in Sources */,
 				6A696214268EC0E1004594DC /* MirrorViewController.swift in Sources */,
 				6A776EFD26687A3C00563417 /* KPlayViewController.swift in Sources */,
+				6A3040BF27BE38AB007D3141 /* EULAAlertView.swift in Sources */,
 				6A4E57B5267C94E9003DAA1B /* kListenOneclickViewController.swift in Sources */,
 				6A776F232668A8D600563417 /* WRCustomNavigationBar.swift in Sources */,
 				6A776F0C26687B4200563417 /* KFindViewController.swift in Sources */,

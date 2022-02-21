@@ -19,10 +19,11 @@ class PointerViewController: UIViewController {
 //        print(MemoryLayout<PointClass>.stride)//步长是16，内存对齐
 //        print(MemoryLayout<PointClass>.alignment)
         
-        //创建一个内存空间 4个8字节，步长8
+//        //创建一个内存空间 4个8字节，步长8
 //        let p = UnsafeMutableRawPointer.allocate(byteCount: 32, alignment: 8)
 //        for i in 0..<4 {
 //            p.advanced(by: i * MemoryLayout<Int>.stride).storeBytes(of: i, as: Int.self)
+////            p.storeBytes(of: i, as: Int.self)
 //        }
 //        for i in 0..<4{
 //            let value = p.load(fromByteOffset: i*8, as: Int.self)
@@ -34,11 +35,13 @@ class PointerViewController: UIViewController {
 //        withUnsafePointer(to: &age) { ptr in
 //            print(ptr)
 //        }
-//
+////
 //        age = withUnsafePointer(to: &age) { ptr in
 //            return ptr.pointee + 21
 //        }
 //        print(age)
+        
+        testStructPoint()
         
         
 //        var tPtr = UnsafeMutablePointer<PointStruct>.allocate(capacity: 5)
@@ -71,16 +74,16 @@ class PointerViewController: UIViewController {
 //        weak var t1 = t
 //        print("end")
         
-        var age = 0
-        var height = 0.0
-        //捕获列表参数都是let ,所以age值在闭包内部不能改变，值类型调用闭包时再捕获
-        let closure = { [age] in
-            print(age)
-            print(height)
-        }
-        age = 10
-        height = 1.87
-        closure()
+//        var age = 0
+//        var height = 0.0
+//        //捕获列表参数都是let ,所以age值在闭包内部不能改变，值类型调用闭包时再捕获
+//        let closure = { [age] in
+//            print(age)
+//            print(height)
+//        }
+//        age = 10
+//        height = 1.87
+//        closure()
         
     }
     
@@ -154,9 +157,9 @@ struct TargetClassDescriptor{
 }
 
 struct PointClass {
-    var name: String = "adsdfsfdsdd你好sfdfasdsac"
+    var name: String = "abc"
     var age: Int = 18
-//    var sex: Bool = true
+    var sex: Bool = true
 }
 
 struct PointStruct {
@@ -172,6 +175,33 @@ class PointTeacher{
 func testPoint(_ p: UnsafePointer<Int8>) {
     print(p[0])
     print(p[1])
+}
+
+func testStructPoint(){
+    // 分配2个 PointClass 大小的空间
+    let ptr = UnsafeMutablePointer<PointClass>.allocate(capacity: 2)
+    // 初始化第一个空间
+    ptr.initialize(to: PointClass())
+    // 移动，初始化第2个空间
+    ptr[1] = PointClass(name: "abc", age: 18, sex: true)
+
+    //访问方式一 下标访问
+    print(ptr[0])
+    print(ptr[1])
+
+    //访问方式二 内存平移
+    print(ptr.pointee)
+    print((ptr+1).pointee)
+
+    //访问方式三 successor()
+    print(ptr.pointee)
+    //successor 往前移动
+    print(ptr.successor().pointee)
+
+    //必须和分配是一致的
+    ptr.deinitialize(count: 2)
+    //释放
+    ptr.deallocate()
 }
 
 

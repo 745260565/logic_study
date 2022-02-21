@@ -14,6 +14,8 @@ PODS:
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
   - SnapKit (5.0.1)
+  - SnapKitExtend (1.1.0):
+    - SnapKit
   - StreamingKit (0.1.30)
   - SVProgressHUD (2.2.5)
   - SwiftMessages (9.0.5):
@@ -34,6 +36,7 @@ DEPENDENCIES:
   - MJRefresh
   - Moya
   - SnapKit
+  - SnapKitExtend
   - StreamingKit
   - SVProgressHUD
   - SwiftMessages
@@ -53,6 +56,7 @@ SPEC REPOS:
     - MJRefresh
     - Moya
     - SnapKit
+    - SnapKitExtend
     - StreamingKit
     - SVProgressHUD
     - SwiftMessages
@@ -71,11 +75,12 @@ SPEC CHECKSUMS:
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SnapKitExtend: aa30cf37196195fae9c4354686cc7710184ebfcc
   StreamingKit: 70ca8608c206864b4d54a577eacb3c8bf7c72209
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftMessages: 9cca50659fa22bb523b4dd2a958d4442e843a354
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 7fc2dbda6d78440a7b1e00b021ad5c002eed8ff5
+PODFILE CHECKSUM: b4336a83b057aa8fdbdf890d89d31d221516c70c
 
 COCOAPODS: 1.11.2
