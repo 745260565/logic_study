@@ -30,10 +30,10 @@ public class Solution {
         var prev: ListNode? = nil
         var curr: ListNode? = head
         while(curr != nil) {
-            let next = curr?.next
+            let temp = curr?.next
             curr?.next = prev
             prev = curr
-            curr = next
+            curr = temp
         }
         return prev
     }
