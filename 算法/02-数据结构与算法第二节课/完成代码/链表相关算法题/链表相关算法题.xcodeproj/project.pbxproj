@@ -1,0 +1,464 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		54C3936227C8B29A004560C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C3936127C8B29A004560C1 /* main.m */; };
+		54C3936627C8B332004560C1 /* SinglyLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 54C3935027C8B0FE004560C1 /* SinglyLinkedList.c */; };
+		54C3936E27C8B466004560C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C3936D27C8B466004560C1 /* main.m */; };
+		54C3937927C8B4E8004560C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C3937827C8B4E8004560C1 /* main.m */; };
+		54C3937D27C8C39D004560C1 /* SinglyLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 54C3935027C8B0FE004560C1 /* SinglyLinkedList.c */; };
+		54C3937E27C8CE5C004560C1 /* SinglyLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 54C3935027C8B0FE004560C1 /* SinglyLinkedList.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		54C3935D27C8B29A004560C1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		54C3936927C8B466004560C1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		54C3937427C8B4E8004560C1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		54C3934F27C8B0FE004560C1 /* SinglyLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SinglyLinkedList.h; sourceTree = "<group>"; };
+		54C3935027C8B0FE004560C1 /* SinglyLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SinglyLinkedList.c; sourceTree = "<group>"; };
+		54C3935F27C8B29A004560C1 /* 反转链表 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "反转链表"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54C3936127C8B29A004560C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		54C3936B27C8B466004560C1 /* 删除链表的倒数第n个结点 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "删除链表的倒数第n个结点"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54C3936D27C8B466004560C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		54C3937627C8B4E8004560C1 /* 链表中环的入口结点 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "链表中环的入口结点"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54C3937827C8B4E8004560C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		54C3935C27C8B29A004560C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54C3936827C8B466004560C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54C3937327C8B4E8004560C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		54C3933927C8AF7A004560C1 = {
+			isa = PBXGroup;
+			children = (
+				54C3934427C8AF7A004560C1 /* 链表相关算法题 */,
+				54C3936027C8B29A004560C1 /* 反转链表 */,
+				54C3936C27C8B466004560C1 /* 删除链表的倒数第n个结点 */,
+				54C3937727C8B4E8004560C1 /* 链表中环的入口结点 */,
+				54C3934327C8AF7A004560C1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		54C3934327C8AF7A004560C1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54C3935F27C8B29A004560C1 /* 反转链表 */,
+				54C3936B27C8B466004560C1 /* 删除链表的倒数第n个结点 */,
+				54C3937627C8B4E8004560C1 /* 链表中环的入口结点 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		54C3934427C8AF7A004560C1 /* 链表相关算法题 */ = {
+			isa = PBXGroup;
+			children = (
+				54C3934F27C8B0FE004560C1 /* SinglyLinkedList.h */,
+				54C3935027C8B0FE004560C1 /* SinglyLinkedList.c */,
+			);
+			path = "链表相关算法题";
+			sourceTree = "<group>";
+		};
+		54C3936027C8B29A004560C1 /* 反转链表 */ = {
+			isa = PBXGroup;
+			children = (
+				54C3936127C8B29A004560C1 /* main.m */,
+			);
+			path = "反转链表";
+			sourceTree = "<group>";
+		};
+		54C3936C27C8B466004560C1 /* 删除链表的倒数第n个结点 */ = {
+			isa = PBXGroup;
+			children = (
+				54C3936D27C8B466004560C1 /* main.m */,
+			);
+			path = "删除链表的倒数第n个结点";
+			sourceTree = "<group>";
+		};
+		54C3937727C8B4E8004560C1 /* 链表中环的入口结点 */ = {
+			isa = PBXGroup;
+			children = (
+				54C3937827C8B4E8004560C1 /* main.m */,
+			);
+			path = "链表中环的入口结点";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		54C3935E27C8B29A004560C1 /* 反转链表 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54C3936327C8B29A004560C1 /* Build configuration list for PBXNativeTarget "反转链表" */;
+			buildPhases = (
+				54C3935B27C8B29A004560C1 /* Sources */,
+				54C3935C27C8B29A004560C1 /* Frameworks */,
+				54C3935D27C8B29A004560C1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "反转链表";
+			productName = "反转链表";
+			productReference = 54C3935F27C8B29A004560C1 /* 反转链表 */;
+			productType = "com.apple.product-type.tool";
+		};
+		54C3936A27C8B466004560C1 /* 删除链表的倒数第n个结点 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54C3936F27C8B466004560C1 /* Build configuration list for PBXNativeTarget "删除链表的倒数第n个结点" */;
+			buildPhases = (
+				54C3936727C8B466004560C1 /* Sources */,
+				54C3936827C8B466004560C1 /* Frameworks */,
+				54C3936927C8B466004560C1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "删除链表的倒数第n个结点";
+			productName = "删除链表的倒数第n个结点";
+			productReference = 54C3936B27C8B466004560C1 /* 删除链表的倒数第n个结点 */;
+			productType = "com.apple.product-type.tool";
+		};
+		54C3937527C8B4E8004560C1 /* 链表中环的入口结点 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54C3937A27C8B4E8004560C1 /* Build configuration list for PBXNativeTarget "链表中环的入口结点" */;
+			buildPhases = (
+				54C3937227C8B4E8004560C1 /* Sources */,
+				54C3937327C8B4E8004560C1 /* Frameworks */,
+				54C3937427C8B4E8004560C1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "链表中环的入口结点";
+			productName = "链表中环的入口结点";
+			productReference = 54C3937627C8B4E8004560C1 /* 链表中环的入口结点 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		54C3933A27C8AF7A004560C1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					54C3935E27C8B29A004560C1 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					54C3936A27C8B466004560C1 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					54C3937527C8B4E8004560C1 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 54C3933D27C8AF7A004560C1 /* Build configuration list for PBXProject "链表相关算法题" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 54C3933927C8AF7A004560C1;
+			productRefGroup = 54C3934327C8AF7A004560C1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				54C3935E27C8B29A004560C1 /* 反转链表 */,
+				54C3936A27C8B466004560C1 /* 删除链表的倒数第n个结点 */,
+				54C3937527C8B4E8004560C1 /* 链表中环的入口结点 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		54C3935B27C8B29A004560C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54C3936627C8B332004560C1 /* SinglyLinkedList.c in Sources */,
+				54C3936227C8B29A004560C1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54C3936727C8B466004560C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54C3937D27C8C39D004560C1 /* SinglyLinkedList.c in Sources */,
+				54C3936E27C8B466004560C1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54C3937227C8B4E8004560C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54C3937E27C8CE5C004560C1 /* SinglyLinkedList.c in Sources */,
+				54C3937927C8B4E8004560C1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		54C3934727C8AF7A004560C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		54C3934827C8AF7A004560C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		54C3936427C8B29A004560C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		54C3936527C8B29A004560C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		54C3937027C8B466004560C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		54C3937127C8B466004560C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		54C3937B27C8B4E8004560C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		54C3937C27C8B4E8004560C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		54C3933D27C8AF7A004560C1 /* Build configuration list for PBXProject "链表相关算法题" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54C3934727C8AF7A004560C1 /* Debug */,
+				54C3934827C8AF7A004560C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54C3936327C8B29A004560C1 /* Build configuration list for PBXNativeTarget "反转链表" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54C3936427C8B29A004560C1 /* Debug */,
+				54C3936527C8B29A004560C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54C3936F27C8B466004560C1 /* Build configuration list for PBXNativeTarget "删除链表的倒数第n个结点" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54C3937027C8B466004560C1 /* Debug */,
+				54C3937127C8B466004560C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54C3937A27C8B4E8004560C1 /* Build configuration list for PBXNativeTarget "链表中环的入口结点" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54C3937B27C8B4E8004560C1 /* Debug */,
+				54C3937C27C8B4E8004560C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 54C3933A27C8AF7A004560C1 /* Project object */;
+}
