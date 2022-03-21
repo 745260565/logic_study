@@ -37,4 +37,29 @@ public class Solution {
         }
         return prev
     }
+    
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     *
+     * @param head ListNode类
+     * @return bool布尔型
+     */
+    func hasCycle ( _ head: ListNode?) -> Bool {
+        // write code here
+        if head == nil {
+            return false
+        }
+        var first: ListNode? = head
+        var second: ListNode? = head
+        while(first != nil && second?.next != nil) {
+            first = first?.next
+            second = second?.next?.next
+            if(first?.val == second?.val) {
+                return true
+            }
+        }
+        return false
+    }
+    
 }
