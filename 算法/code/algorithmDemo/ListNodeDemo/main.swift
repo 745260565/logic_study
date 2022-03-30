@@ -9,9 +9,10 @@ import Foundation
 import DPDemo
 
 public class ListNode {
+    
     public var val: Int
     public var next: ListNode?
-    public init(_ val: Int = 0, _ next: ListNode? = nil) {
+    public init(_ val: Int = 0, _ next:  ListNode? = nil) {
         self.val = val
         self.next = next
     }
@@ -20,8 +21,9 @@ public class ListNode {
 let a = ListNode(9, ListNode(3,ListNode(7,nil)))
 let b = ListNode(6,ListNode(3,nil))
 let s = Solution()
-s.printListNode(s.addInList(a, b))
-s.printListNode(s.addInList2(a, b))
+//s.printListNode(s.addInList(a, b))
+//s.printListNode(s.addInList2(a, b))
+s.printListNode(s.FindFirstCommonNode(a, b))
 
 public class Solution {
     
@@ -412,6 +414,73 @@ public class Solution {
             }
         }
         return head
+    }
+    
+    //BM16 删除有序链表中重复的元素-II
+    //https://www.nowcoder.com/practice/71cef9f8b5564579bf7ed93fbe0b2024?tpId=295&tqId=663&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+    //HashMap解决
+    func deleteDuplicates2 ( _ head: ListNode?) -> ListNode? {
+        // write code here
+        var map : [Int: Int] = [:]
+        var currListNode = head
+        while currListNode != nil {
+            if map[currListNode!.val] != nil {
+                map[currListNode!.val]! += 1
+            } else {
+                map[currListNode!.val] = 1
+            }
+            currListNode = currListNode?.next
+        }
+        let resListNode = ListNode.init(-1, nil)
+        resListNode.next = head
+        var deleListNode = resListNode
+        while deleListNode.next != nil {
+            if map.keys.contains(deleListNode.next!.val) && map[deleListNode.next!.val]!>1 {
+                deleListNode.next = deleListNode.next?.next
+            }else {
+                deleListNode = deleListNode.next!
+            }
+        }
+        return resListNode.next
+    }
+    
+    //BM10 两个链表的第一个公共结点
+    //https://www.nowcoder.com/practice/6ab1d9a29e88450685099d45c9e31e46?tpId=295&tqId=23257&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+    func FindFirstCommonNode ( _ pHead1: ListNode?,  _ pHead2: ListNode?) -> ListNode? {
+        // write code here
+        if pHead1 == nil || pHead2 == nil {
+            return nil
+        }
+        var p1 = pHead1
+        while(p1 != nil) {
+            var p2 = pHead2
+            while(p2 != nil) {
+                if p1 === p2 {
+                    return p1
+                }
+                p2 = p2?.next
+            }
+            p1 = p1?.next
+        }
+        return nil
+    }
+    
+    //两个拼接实现
+    func FindFirstCommonNode2 ( _ pHead1: ListNode?,  _ pHead2: ListNode?) -> ListNode? {
+        // write code here
+        if pHead1 == nil || pHead2 == nil {
+            return nil
+        }
+        var p1 = pHead1
+        var p2 = pHead2
+        while(p1 == nil || p2 == nil || Unmanaged<ListNode>.passUnretained(p1!).toOpaque() != Unmanaged<ListNode>.passUnretained(p2!).toOpaque()) {
+            if p1 == nil && p2 == nil {
+                return nil
+            }
+            (p1 != nil) ? (p1 = p1?.next) : (p1 = pHead2)
+            (p2 != nil) ? (p2 = p2?.next) : (p2 = pHead1)
+        }
+        return p1
     }
 }
 

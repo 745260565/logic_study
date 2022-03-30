@@ -70,6 +70,39 @@ public class Solution {
         }
     }
     
+    //BM26 求二叉树的层序遍历
+    //https://www.nowcoder.com/practice/04a5560e43e24e9db4595865dc9c63a3?tpId=295&tqId=644&ru=%2Fpractice%2F8b3b95850edb4115918ecebdf1b4d222&qru=%2Fta%2Fformat-top101%2Fquestion-ranking&sourceUrl=%2Fexam%2Foj
+    func levelOrder ( _ root: TreeNode?) -> [[Int]] {
+        // write code here
+        var res = [[Int]]()
+        if root == nil {
+            return res
+        }
+        var queue = [root!] //定义一个TreeNode队列，后续就操作这个队列
+        while !queue.isEmpty { //TreeNode不为空就遍历，queue中先有一个TreeNode就是root,第2次就两个，第3次4个,依次类推，同时res中一层层地输出
+            let r = getNodes(queue)
+            res.append(r.vals)
+            queue = r.nodes
+        }
+        return res
+    }
+    
+    //得到每一层的val和下一层的node
+    func getNodes(_ nodes:[TreeNode]) -> (vals: [Int], nodes: [TreeNode]) {
+        var values = [Int]()
+        var nextNodes = [TreeNode]()
+        for treeNode in nodes {
+            values.append(treeNode.val)
+            if let l = treeNode.left {
+                nextNodes.append(l)
+            }
+            if let r = treeNode.right {
+                nextNodes.append(r)
+            }
+        }
+        return (values, nextNodes)
+    }
+    
     //BM28 二叉树的最大深度
     //https://www.nowcoder.com/practice/8a2b2bf6c19b4f23a9bdb9b233eefa73?tpId=295&tqId=642&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
     func maxDepth ( _ root: TreeNode?) -> Int {
@@ -123,5 +156,28 @@ public class Solution {
         r.append(middenTraversal(root))
         r.append(postorderTraversal(root))
         return r
+    }
+    
+    //BM32 合并二叉树
+    //https://www.nowcoder.com/practice/7298353c24cc42e3bd5f0e0bd3d1d759?tpId=295&tqId=1025038&ru=%2Fpractice%2Ff95dcdafbde44b22a6d741baf71653f6&qru=%2Fta%2Fformat-top101%2Fquestion-ranking&sourceUrl=%2Fexam%2Foj
+    func mergeTrees ( _ t1: TreeNode?,  _ t2: TreeNode?) -> TreeNode? {
+        // write code here
+        if t1 == nil {
+            return t2
+        }
+        if t2 == nil {
+            return t1
+        }
+        return TreeNode(t1!.val+t2!.val, mergeTrees(t1?.left, t2?.left), mergeTrees(t1?.right, t2?.right))
+    }
+    
+    //BM33 二叉树的镜像
+    //https://www.nowcoder.com/practice/a9d0ecbacef9410ca97463e4a5c83be7?tpId=295&tqId=1374963&ru=%2Fpractice%2F7298353c24cc42e3bd5f0e0bd3d1d759&qru=%2Fta%2Fformat-top101%2Fquestion-ranking&sourceUrl=%2Fexam%2Foj
+    func Mirror ( _ pRoot: TreeNode?) -> TreeNode? {
+        // write code here
+        if pRoot == nil {
+            return nil
+        }
+        return TreeNode(pRoot!.val, Mirror(pRoot?.right), Mirror(pRoot?.left))
     }
 }
