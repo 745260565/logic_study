@@ -72,7 +72,7 @@ public class Solution {
     
     //BM26 求二叉树的层序遍历
     //https://www.nowcoder.com/practice/04a5560e43e24e9db4595865dc9c63a3?tpId=295&tqId=644&ru=%2Fpractice%2F8b3b95850edb4115918ecebdf1b4d222&qru=%2Fta%2Fformat-top101%2Fquestion-ranking&sourceUrl=%2Fexam%2Foj
-    func levelOrder ( _ root: TreeNode?) -> [[Int]] {
+    func levelOrder1 ( _ root: TreeNode?) -> [[Int]] {
         // write code here
         var res = [[Int]]()
         if root == nil {
@@ -103,6 +103,24 @@ public class Solution {
         return (values, nextNodes)
     }
     
+    func levelOrder ( _ root: TreeNode?) -> [[Int]] {
+        // write code here
+        var res = [[Int]]()//最终结果
+        iterationFunc(root, level: 0, res: &res)
+        return res
+    }
+    
+    func iterationFunc( _ root: TreeNode?, level: Int, res:inout [[Int]]) {
+        if root == nil {
+            return
+        }
+        if level >= res.count { //新的一层
+            res.append([Int]()) //后面加一个空的[Int]数组
+        }
+        res[level].append(root!.val)//根结点添加到数组中
+        iterationFunc(root?.left, level: level + 1, res: &res) //添加左子树
+        iterationFunc(root?.right, level: level + 1, res: &res) //添加右子树
+    }
     //BM28 二叉树的最大深度
     //https://www.nowcoder.com/practice/8a2b2bf6c19b4f23a9bdb9b233eefa73?tpId=295&tqId=642&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
     func maxDepth ( _ root: TreeNode?) -> Int {

@@ -18,12 +18,13 @@ public class ListNode {
     }
 }
 
-let a = ListNode(9, ListNode(3,ListNode(7,nil)))
+let a = ListNode(9, ListNode(3,ListNode(7,ListNode(2,ListNode(19,ListNode(1,ListNode(8,nil)))))))
 let b = ListNode(6,ListNode(3,nil))
 let s = Solution()
 //s.printListNode(s.addInList(a, b))
 //s.printListNode(s.addInList2(a, b))
-s.printListNode(s.FindFirstCommonNode(a, b))
+//s.printListNode(s.FindFirstCommonNode(a, b))
+s.printListNode(s.FindKthToTail(a, 3))
 
 public class Solution {
     
@@ -481,6 +482,30 @@ public class Solution {
             (p2 != nil) ? (p2 = p2?.next) : (p2 = pHead1)
         }
         return p1
+    }
+    
+    //链表中倒数最后k个结点
+    //https://www.nowcoder.com/practice/886370fe658f41b498d40fb34ae76ff9?tpId=295&tqId=1377477&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+    func FindKthToTail ( _ pHead: ListNode?,  _ k: Int) -> ListNode? {
+        // write code here
+        if k == 0 || pHead == nil {
+            return nil
+        }
+        var mListNode = pHead
+        var m = 1
+        while(m <= k && mListNode != nil) {
+            mListNode = mListNode?.next
+            m += 1
+        }
+        if mListNode == nil && (m < k+1) {
+            return nil
+        }
+        var nListNode = pHead
+        while(mListNode != nil) {
+            mListNode = mListNode?.next
+            nListNode = nListNode?.next
+        }
+        return nListNode
     }
 }
 
