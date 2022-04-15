@@ -7,6 +7,11 @@
 
 import Foundation
 
+
+
+print(findMedianSortedArrays([], [1]))
+
+
 func trap(_ height: [Int]) -> Int {
     
     if height.count < 3 {
@@ -79,5 +84,58 @@ func MoreThanHalfNum_Solution ( _ numbers: [Int]) -> Int {
         }
     }
     return array.count == 0 ? 0 : array[0]
+}
+
+//4. 寻找两个正序数组的中位数
+//https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
+func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
+    if nums1.count == 0 && nums2.count == 0 {
+        return 0
+    }
+    let l1 = nums1.count
+    let l2 = nums2.count
+    var array = [Int]()
+    var i1 = 0, i2 = 0
+    while(array.count < (l1+l2)/2 + 1) {
+        if i1<l1 && i2<l2 {
+            if nums1[i1]<nums2[i2] {
+                array.append(nums1[i1])
+                i1 += 1
+            } else {
+                array.append(nums2[i2])
+                i2 += 1
+            }
+        } else {
+            if i1 >= l1 {
+                array.append(nums2[i2])
+                i2 += 1
+            }else if i2 >= l2 {
+                array.append(nums1[i1])
+                i1 += 1
+            }
+        }
+    }
+    if (l1+l2)%2 == 0 {
+        return ((Double)(array.last! + array[array.count-2]))/2
+    } else {
+        return Double(array.last!)
+    }
+}
+
+//BM46 最小的K个数
+//https://www.nowcoder.com/practice/6a296eb82cf844ca8539b57c23e6e9bf?tpId=295&tqId=23263&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+func GetLeastNumbers_Solution ( _ input: [Int],  _ k: Int) -> [Int] {
+    // write code here
+    let sortInput = input.sorted()
+    if k >= input.count {
+        return input
+    }
+    var array = [Int]()
+    var i = 0
+    while i<k {
+        array.append(sortInput[i])
+        i += 1
+    }
+    return array
 }
 

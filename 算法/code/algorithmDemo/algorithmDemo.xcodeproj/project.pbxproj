@@ -109,6 +109,7 @@
 		6AC0FF0D27EC423D00EEEFAD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6AC0FF1627F42F3F00EEEFAD /* MathDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MathDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC0FF1827F42F3F00EEEFAD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		6AD039782807F3D6001ABCE1 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +175,7 @@
 		6AC0FEBD27E973E200EEEFAD = {
 			isa = PBXGroup;
 			children = (
+				6AD039782807F3D6001ABCE1 /* MyPlayground.playground */,
 				6AC0FEC827E973E200EEEFAD /* AlgorithmDemo */,
 				6AC0FED527E973F300EEEFAD /* ListNodeDemo */,
 				6AC0FEE027E973FE00EEEFAD /* ArrayDemo */,

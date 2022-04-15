@@ -24,7 +24,8 @@ let s = Solution()
 //s.printListNode(s.addInList(a, b))
 //s.printListNode(s.addInList2(a, b))
 //s.printListNode(s.FindFirstCommonNode(a, b))
-s.printListNode(s.FindKthToTail(a, 3))
+//s.printListNode(s.FindKthToTail(a, 3))
+s.sortInList(a)
 
 public class Solution {
     
@@ -506,6 +507,85 @@ public class Solution {
             nListNode = nListNode?.next
         }
         return nListNode
+    }
+    
+    //BM7 链表中环的入口结点
+    //https://www.nowcoder.com/practice/253d2c59ec3e4bc68da16833f79a38e4?tpId=295&tqId=23449&ru=%2Fpractice%2Ff95dcdafbde44b22a6d741baf71653f6&qru=%2Fta%2Fformat-top101%2Fquestion-ranking&sourceUrl=%2Fexam%2Foj
+    func EntryNodeOfLoop ( _ pHead: ListNode?) -> ListNode? {
+        // write code here
+        if pHead == nil || pHead?.next == nil {
+            return nil
+        }
+        var mHead = pHead //慢指针
+        var nHead = pHead //快指针
+        while(mHead != nil && nHead != nil && nHead?.next != nil) {
+            mHead = mHead?.next
+            nHead = nHead?.next?.next
+            if mHead === nHead {
+                break
+            }
+        }
+        if !(mHead === nHead) {
+            return nil
+        } else {//mHead和nHead已经相遇
+            var oHead = pHead
+            while(mHead != nil && oHead != nil && !(mHead === oHead)) {
+                mHead = mHead?.next
+                oHead = oHead?.next
+            }
+            return oHead
+        }
+    }
+    
+    //BM9 删除链表的倒数第n个节点
+    //https://www.nowcoder.com/practice/f95dcdafbde44b22a6d741baf71653f6?tpId=295&tqId=727&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+    func removeNthFromEnd ( _ head: ListNode?,  _ n: Int) -> ListNode? {
+        // write code here
+        if n == 0 {
+            return head
+        }
+        let pHead = ListNode.init(-1, nil)
+        pHead.next = head
+        var mNode = pHead
+        var k = 0
+        while(k<n && mNode.next != nil) {
+            k += 1
+            mNode = mNode.next!
+        }
+        if k < n {
+            return nil
+        }
+        //找到倒数第k个节点的前一个
+        var nNode = pHead
+        while(mNode.next != nil) {
+            nNode = nNode.next!
+            mNode = mNode.next!
+        }
+        nNode.next = nNode.next!.next
+        return pHead.next
+    }
+    
+    //BM12 单链表的排序
+    //https://www.nowcoder.com/practice/f23604257af94d939848729b1a5cda08?tpId=295&tqId=1008897&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+    func sortInList ( _ head: ListNode?) -> ListNode? {
+        // write code here
+        if head == nil && head?.next == nil {
+            return head
+        }
+        var array = [Int]()
+        var curr = head
+        while curr != nil {
+            array.append(curr!.val)
+            curr = curr?.next
+        }
+        array.sort { a, b in
+            a < b
+        }
+        let putNodet = ListNode(-1,curr)
+        while !array.isEmpty {
+            putNodet.next = ListNode(array.popLast()!,putNodet.next)
+        }
+        return putNodet.next
     }
 }
 

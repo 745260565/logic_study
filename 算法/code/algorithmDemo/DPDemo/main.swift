@@ -7,6 +7,9 @@
 
 import Foundation
 
+let s = Solution()
+s.uniquePaths(2, 1)
+
 class Solution {
     //买卖股票的最佳时机 II
     func maxProfit(_ prices: [Int]) -> Int {
@@ -77,5 +80,58 @@ class Solution {
         }
         return min(a,b)
     }
+    
+    //BM67 不同路径的数目(一)
+    //https://www.nowcoder.com/practice/166eaff8439d4cd898e3ba933fbc6358?tpId=295&tqId=685&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+    func uniquePaths ( _ m: Int,  _ n: Int) -> Int {
+        // write code here
+        if m == 1 && n == 1 {
+            return 1
+        }
+        var array = [[Int]](repeating: [Int](repeating: 0, count: n), count: m)
+        var i = 0,j = 0
+        while(i<m) {
+            while(j<n) {
+                if i == 0 && j == 0 {
+                    array[i][j] = 0
+                } else if i == 0 || j == 0 {
+                    array[i][j] = 1
+                } else {
+                    array[i][j] = array[i-1][j] + array[i][j-1]
+                }
+                j += 1
+            }
+            i += 1
+            j = 0
+        }
+        return array[m-1][n-1]
+    }
+    
+    //BM81 买卖股票的最好时机(二)
+    //https://www.nowcoder.com/practice/9e5e3c2603064829b0a0bbfca10594e9?tpId=295&tqId=1073471&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+    //使用两个变量，一个记录当天交易完之后手里持有股票的最大利润，一个记录当天交易完之后手里没有股票的最大利润
+    func maxProfit3 ( _ prices: [Int]) -> Int {
+        // write code here
+        if prices.count <= 0 {
+            return 0
+        }
+        var hold = -prices[0] //手里有股票最大收益
+        var noHold = 0 //手里没有股票最大收益
+        for i in 1..<prices.count {
+            hold = max(hold, noHold-prices[i])
+            noHold = max(hold+prices[i],noHold)
+        }
+        return noHold
+    }
+    
+    //BM82 买卖股票的最好时机(三)
+    //https://www.nowcoder.com/practice/4892d3ff304a4880b7a89ba01f48daf9?tpId=295&tqId=1073487&ru=%2Fpractice%2F9e5e3c2603064829b0a0bbfca10594e9&qru=%2Fta%2Fformat-top101%2Fquestion-ranking&sourceUrl=%2Fexam%2Foj
+    //   假设你有一个数组prices，长度为n，其中prices[i]是某只股票在第i天的价格，请根据这个价格数组，返回买卖股票能获得的最大收益
+    //    1. 你最多可以对该股票有两笔交易操作，一笔交易代表着一次买入与一次卖出，但是再次购买前必须卖出之前的股票
+    //    2. 如果不能获取收益，请返回0
+    //    3. 假设买入卖出均无手续费
+//    func maxProfit4 ( _ prices: [Int]) -> Int {
+//        // write code here
+//    }
 }
 
