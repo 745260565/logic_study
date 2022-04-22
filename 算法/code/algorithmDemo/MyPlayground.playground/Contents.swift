@@ -1,11 +1,9 @@
 import Cocoa
 
-//var greeting = "He32llo, playground"
-//
-//let str = "Hello, world!"
-//for (index, char) in str.enumerated() {
-//    let i = str.index(str.startIndex, offsetBy: index)
-//    print(str[i])
-//}
+let myArray = ["bd","bc","abc","abd","aba","abe","ac","a","b","c","cb","ca"]
 
-print(Character(UnicodeScalar(97)))
+let ans = myArray.sorted { s1, s2 in
+    return s1.localizedStandardCompare(s2) == .orderedAscending
+}
+
+print(ans)
