@@ -133,5 +133,21 @@ class Solution {
 //    func maxProfit4 ( _ prices: [Int]) -> Int {
 //        // write code here
 //    }
+    
+    //BM72 连续子数组的最大和
+    //https://www.nowcoder.com/practice/459bd355da1549fa8a49e350bf3df484?tpId=295&tqId=23259&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+    func FindGreatestSumOfSubArray ( _ array: [Int]) -> Int {
+        // write code here
+        let count = array.count
+        var dp = [Int].init(repeating: 0, count: count)
+        var ret = array[0]
+        for (index,_) in array.enumerated() {
+            if index > 0 {
+                dp[index] = max(array[index-1], dp[index-1]+array[index-1])
+                ret = max(ret, dp[index])
+            }
+        }
+        return ret
+    }
 }
 
