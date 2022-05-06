@@ -23,7 +23,9 @@ int main(int argc, const char * argv[]) {
         NSLog(@"Hello World!");
     
         LGPerson *p = [LGPerson alloc];
-        test(p);
+        [p init];
+        [LGPerson new];
+//        test(p);
     }
     return 0;
 }

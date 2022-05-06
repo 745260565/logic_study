@@ -149,5 +149,66 @@ class Solution {
         }
         return ret
     }
+    
+    //BM78 打家劫舍(一)
+    //https://www.nowcoder.com/practice/c5fbf7325fbd4c0ea3d0c3ea6bc6cc79?tpId=295&tqId=2285793&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+    func rob ( _ nums: [Int]) -> Int {
+        // write code here
+        if nums.count == 1 {
+            return nums[0]
+        }
+        if nums.count == 2 {
+            return max(nums[0], nums[1])
+        }
+        var a = nums[0]
+        var b = max(nums[0],nums[1])
+        var c = b
+        for (index,num) in nums.enumerated() {
+            if index>1 {
+                c = max(b,a+num)
+                a = b
+                b = c
+            }
+        }
+        return c
+    }
+    
+    //BM79 打家劫舍(二)
+    //https://www.nowcoder.com/practice/a5c127769dd74a63ada7bff37d9c5815?tpId=295&tqId=2285837&ru=%2Fpractice%2Fc5fbf7325fbd4c0ea3d0c3ea6bc6cc79&qru=%2Fta%2Fformat-top101%2Fquestion-ranking&sourceUrl=%2Fexam%2Foj
+    //思路，分两种情况:
+    //第一家不偷，最后一家偷，dp[0] = 0
+    //第一家偷，最后一家不偷，计算到最后一家
+    func rob2 ( _ nums: [Int]) -> Int {
+        // write code here
+        if nums.count == 1 {
+            return nums[0]
+        }
+        if nums.count == 2 {
+            return max(nums[0], nums[1])
+        }
+        //第一家不偷，最后一家偷
+        var a1 = 0
+        var b1 = max(a1,nums[1])
+        var c1 = b1
+        for (index,num) in nums.enumerated() {
+            if index>1 {
+                c1 = max(b1,a1+num)
+                a1 = b1
+                b1 = c1
+            }
+        }
+        //第一家偷，最后一家不偷
+        var a2 = nums[0]
+        var b2 = max(a2,nums[1])
+        var c2 = b2
+        for (index,num) in nums.enumerated() {
+            if index>1 && index<nums.count-1 {
+                c2 = max(b2,a2+num)
+                a2 = b2
+                b2 = c2
+            }
+        }
+        return max(c1, c2)
+    }
 }
 
