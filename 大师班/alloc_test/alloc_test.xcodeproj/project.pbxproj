@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A5ED52A282BBA2F004C6647 /* FMTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5ED529282BBA2F004C6647 /* FMTestObject.m */; };
+		6A5ED52D282BBD3D004C6647 /* FMTestObject1.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5ED52C282BBD3D004C6647 /* FMTestObject1.m */; };
+		6ABD9E90282BA9FD004E05E7 /* FMUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD9E8F282BA9FD004E05E7 /* FMUserInfo.m */; };
 		6AD039862809A081001ABCE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD039852809A081001ABCE1 /* main.m */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +26,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6A5ED528282BBA2F004C6647 /* FMTestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTestObject.h; sourceTree = "<group>"; };
+		6A5ED529282BBA2F004C6647 /* FMTestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMTestObject.m; sourceTree = "<group>"; };
+		6A5ED52B282BBD3D004C6647 /* FMTestObject1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTestObject1.h; sourceTree = "<group>"; };
+		6A5ED52C282BBD3D004C6647 /* FMTestObject1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMTestObject1.m; sourceTree = "<group>"; };
+		6ABD9E8E282BA9FD004E05E7 /* FMUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMUserInfo.h; sourceTree = "<group>"; };
+		6ABD9E8F282BA9FD004E05E7 /* FMUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMUserInfo.m; sourceTree = "<group>"; };
 		6AD039822809A081001ABCE1 /* alloc_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = alloc_test; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AD039852809A081001ABCE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +67,12 @@
 			isa = PBXGroup;
 			children = (
 				6AD039852809A081001ABCE1 /* main.m */,
+				6ABD9E8E282BA9FD004E05E7 /* FMUserInfo.h */,
+				6ABD9E8F282BA9FD004E05E7 /* FMUserInfo.m */,
+				6A5ED528282BBA2F004C6647 /* FMTestObject.h */,
+				6A5ED529282BBA2F004C6647 /* FMTestObject.m */,
+				6A5ED52B282BBD3D004C6647 /* FMTestObject1.h */,
+				6A5ED52C282BBD3D004C6647 /* FMTestObject1.m */,
 			);
 			path = alloc_test;
 			sourceTree = "<group>";
@@ -119,7 +134,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A5ED52A282BBA2F004C6647 /* FMTestObject.m in Sources */,
+				6A5ED52D282BBD3D004C6647 /* FMTestObject1.m in Sources */,
 				6AD039862809A081001ABCE1 /* main.m in Sources */,
+				6ABD9E90282BA9FD004E05E7 /* FMUserInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
