@@ -198,4 +198,55 @@ public class Solution {
         }
         return TreeNode(pRoot!.val, Mirror(pRoot?.right), Mirror(pRoot?.left))
     }
+    
+    //BM34 判断是不是二叉搜索树
+    //https://www.nowcoder.com/practice/a69242b39baf45dea217815c7dedb52b?tpId=295&tqId=2288088&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+    var pre = Int.min
+    func isValidBST ( _ root: TreeNode?) -> Bool {
+        if root == nil {
+            return true
+        }
+        if(!isValidBST(root?.left)) {
+            return false
+        }
+        if root!.val < pre {
+            return false
+        } else {
+            pre = root!.val
+        }
+        return isValidBST(root?.right)
+    }
+    
+    
+    //BM27 按之字形顺序打印二叉树
+    //https://www.nowcoder.com/practice/91b69814117f4e8097390d107d2efbe0?tpId=295&tqId=23454&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+    //思路：把层序遍历的偶数层反转即可
+    func Print ( _ pRoot: TreeNode?) -> [[Int]] {
+        // write code here
+        var res = [[Int]]()
+        if pRoot == nil {
+            return res
+        }
+        var queue = [pRoot!] //定义一个TreeNode队列，后续就操作这个队列
+        var i = 1
+        while !queue.isEmpty { //TreeNode不为空就遍历，queue中先有一个TreeNode就是root,第2次就两个，第3次4个,依次类推，同时res中一层层地输出
+            let r = getNodes(queue)
+            res.append((i%2 == 1) ? r.vals : rollbackArray(r.vals))
+            queue = r.nodes
+            i += 1
+        }
+        return res
+    }
+    
+    func rollbackArray (_ array: [Int]) -> [Int] {
+        if array.count == 0 || array.count == 1 {
+            return array
+        }
+        var res: [Int] = [Int]()
+        var temp = array
+        while temp.count != 0 {
+            res.append(temp.popLast()!)
+        }
+        return res
+    }
 }
