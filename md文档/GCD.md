@@ -112,3 +112,41 @@ dispatch_once_f(dispatch_once_t *val, void *ctxt, dispatch_function_t func)
 }
 ```
 
+###### 栅栏函数：
+
+对全局并发队列无效--因为系统内部在用全局并发队列，开发人员不能影响系统功能
+
+###### group_enter和group_leave
+
+dispatch_group 通过一个状态值的设置，控制组里面任务的执行顺序
+
+###### dispatch_semaphore_t 信号量
+
+dispatch_semaphore_create：创建信号量，指定信号量大小
+
+dispatch_semaphore_signal：发送信号量，将信号量+1
+
+dispatch_semaphore_wait：等待信号量，当信号量值为0，阻塞线程一直等待，当信号量的值大于等于1的时候，对信号量-1
+
+dispatch_semaphore_signal和dispatch_semaphore_wait一定要成对出现，如果只有dispatch_semaphore_wait会出现闪退
+
+//能够控制并发数量
+
+###### dispatch source
+
+dispatch_source_create 创建源
+
+dispatch_source_set_event_handler 设置源事件回调
+
+dispatch_source_merge_data 源事件设置数据
+
+dispatch_source_get_data 获取源事件数据
+
+dispatch)resume 继续
+
+dispatch_suspend 挂起
+
+dispatch_source_cancel 取消源事件
+
+
+
