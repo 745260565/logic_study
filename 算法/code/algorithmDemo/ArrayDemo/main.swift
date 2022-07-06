@@ -139,3 +139,46 @@ func GetLeastNumbers_Solution ( _ input: [Int],  _ k: Int) -> [Int] {
     return array
 }
 
+//BM87 合并两个有序的数组
+func merge ( _ A: inout [Int],  _ m: Int,  _ B: [Int],  _ n: Int) {
+    // write code here
+    var i:Int = m - 1
+    var j:Int = n - 1
+    var k:Int = m+n-1
+    while i >= 0 && j >= 0 {
+        if A[i] > B[j] {
+            A[k] = A[i]
+            i -= 1
+            k -= 1
+        } else {
+            A[k] = B[j]
+            j -= 1
+            k -= 1
+        }
+    }
+    while j >= 0 {
+        A[k] = B[j]
+        j -= 1
+        k -= 1
+    }
+}
+
+//BM21 旋转数组的最小数字
+//https://www.nowcoder.com/practice/9f3231a991af4f55b95579b44b7a01ba?tpId=295&tqId=23269&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+func minNumberInRotateArray ( _ rotateArray: [Int]) -> Int {
+    // write code here
+    var left = 0
+    var right = rotateArray.count - 1
+    while(left < right) {
+        let mid = (left + right)/2
+        if rotateArray[mid] > rotateArray[right] {
+            left = mid + 1
+        } else if rotateArray[mid] == rotateArray[right] { //相等无法区分
+            right -= 1
+        } else {
+            right = mid
+        }
+    }
+    return rotateArray[left]
+}
+

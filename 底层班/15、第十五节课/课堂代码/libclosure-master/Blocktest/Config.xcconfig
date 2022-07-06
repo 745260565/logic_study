@@ -1,0 +1,14 @@
+VERBOSE_SCRIPT_LOGGING=-v
+MACH_PATH=${BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/${PRODUCT_NAME}
+
+// pushd "${SRCROOT}/Blocktest" Blocktest目录
+// && ; 前一个命令的结构
+// xcrun -sdk iphonesimulator clang -S -rewrite-objc -fobjc-arc -fobjc-runtime=ios-14.4 "${SRCROOT}/Blocktest/main.m"
+// open main.cpp
+// popd
+// xcode 脚本
+CMD = pushd "${SRCROOT}/Blocktest";xcrun -sdk iphonesimulator clang -S -rewrite-objc -fobjc-arc -fobjc-runtime=ios-14.4 "${SRCROOT}/Blocktest/main.m";open main.cpp;popd
+
+TTY=/dev/ttys000
+
+
