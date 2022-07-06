@@ -10,6 +10,6 @@
 #define A 10
 
 int main(int argc, const char * argv[]) {
-    printf("%d",A + 20));   
+    printf("%d",A + 20);
     return 0;
 }
