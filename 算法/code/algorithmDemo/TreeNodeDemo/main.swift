@@ -209,7 +209,7 @@ public class Solution {
         if(!isValidBST(root?.left)) {
             return false
         }
-        if root!.val < pre {
+        if root!.val <= pre {
             return false
         } else {
             pre = root!.val
@@ -248,5 +248,12 @@ public class Solution {
             res.append(temp.popLast()!)
         }
         return res
+    }
+    
+    func invertTree(_ root: TreeNode?) -> TreeNode? {
+        if root == nil {
+            return nil
+        }
+        return TreeNode(root!.val, invertTree(root!.right), invertTree(root!.left))
     }
 }

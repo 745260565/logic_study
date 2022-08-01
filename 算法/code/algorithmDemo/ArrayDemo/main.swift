@@ -7,9 +7,7 @@
 
 import Foundation
 
-
-
-print(findMedianSortedArrays([], [1]))
+print(merge2([[1,4],[0,4]]))
 
 
 func trap(_ height: [Int]) -> Int {
@@ -180,5 +178,35 @@ func minNumberInRotateArray ( _ rotateArray: [Int]) -> Int {
         }
     }
     return rotateArray[left]
+}
+
+func peakIndexInMountainArray(_ arr: [Int]) -> Int {
+    var l = 0
+    var r = arr.count - 1
+    var ans = (l + r)/2
+    while !((arr[ans] > arr[ans + 1]) && (arr[ans] > arr[ans - 1])) {
+        if arr[ans] < arr[ans + 1] {
+            l = ans + 1
+        } else {
+            r = ans - 1
+        }
+        ans = (l + r)/2
+    }
+    return ans
+}
+
+func merge2(_ intervals: [[Int]]) -> [[Int]] {
+    var array = intervals
+    array.sort { $0[0] < $1[0]}
+    var i = 0
+    while i < array.count-1 {
+        if array[i][1] >= array[i+1][0] { //合并成一个，i不变
+            array[i] = [array[i][0],max(array[i][1], array[i+1][1])]
+            array.remove(at: i+1)
+        } else { //不合并，i加1
+            i += 1
+        }
+    }
+    return array
 }
 

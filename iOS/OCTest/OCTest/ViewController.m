@@ -15,6 +15,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *firstString = @"helloworld";
+    NSString *secondString = [NSString stringWithFormat:@"helloworld"];
+    NSString *thirdString = @"hello";
+    NSString *fourthString = [NSString stringWithFormat:@"hello"];
+    
+    NSLog(@"%p %@",firstString,[firstString class]);
+    NSLog(@"%p %@",secondString,[secondString class]);
+    NSLog(@"%p %@",thirdString,[thirdString class]);
+    NSLog(@"%p %@",fourthString,[fourthString class]);
     // Do any additional setup after loading the view.
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 let s = Solution()
-s.uniquePaths(2, 1)
+s.maxProfit5([7,1,5,3,6,4])
 
 class Solution {
     //买卖股票的最佳时机 II
@@ -209,6 +209,32 @@ class Solution {
             }
         }
         return max(c1, c2)
+    }
+    
+    func fib(_ n: Int) -> Int {
+        if n < 2 {
+            return n
+        }
+        var i1: Int64 = 0
+        var i2: Int64 = 1
+        var r: Int64 = 1
+        var i = 2
+        while i <= n {
+            r = i1 + i2
+            i1 = i2
+            i2 = r
+            i += 1
+        }
+        return Int(r%1000000007)
+    }
+    
+    func maxProfit5(_ prices: [Int]) -> Int {
+        var min = prices[0]
+        var res = 0
+        var i = 1
+        while i < prices.count {
+            if i > 
+        }
     }
 }
 
