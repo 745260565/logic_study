@@ -7,6 +7,8 @@
 
 import Foundation
 
+print(intersection([1,2,2,1],[2,2]))
+
 
 while let line = readLine() {
     let parts = line.split(separator: " ")
@@ -38,4 +40,16 @@ func trans ( _ s: String,  _ n: Int) -> String {
         }
     }
     return array.joined(separator: " ")
+}
+
+func findRepeatNumber(_ nums: [Int]) -> Int {
+    var t = nums.sorted()
+    var i = 0
+    while i < nums.count - 1 {
+        if t[i] == t[i+1] {
+            return t[i]
+        }
+        i += 1
+    }
+    return 0
 }

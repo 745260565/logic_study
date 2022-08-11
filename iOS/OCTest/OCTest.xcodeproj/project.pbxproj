@@ -14,6 +14,7 @@
 		6A1B07C9278FF5B700499575 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A1B07C8278FF5B700499575 /* Assets.xcassets */; };
 		6A1B07CC278FF5B700499575 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A1B07CA278FF5B700499575 /* LaunchScreen.storyboard */; };
 		6A1B07CF278FF5B700499575 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B07CE278FF5B700499575 /* main.m */; };
+		6AA07B2F28A3AF65000EBDD8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA07B2E28A3AF65000EBDD8 /* UIView+Frame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,9 @@
 		6A1B07CB278FF5B700499575 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A1B07CD278FF5B700499575 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A1B07CE278FF5B700499575 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6AA07B2D28A3AF65000EBDD8 /* UIView+Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		6AA07B2E28A3AF65000EBDD8 /* UIView+Frame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		6AA07B3028A3B233000EBDD8 /* UIView+Size.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Size.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,9 @@
 				6A1B07C0278FF5B400499575 /* SceneDelegate.m */,
 				6A1B07C2278FF5B400499575 /* ViewController.h */,
 				6A1B07C3278FF5B400499575 /* ViewController.m */,
+				6AA07B3028A3B233000EBDD8 /* UIView+Size.h */,
+				6AA07B2D28A3AF65000EBDD8 /* UIView+Frame.h */,
+				6AA07B2E28A3AF65000EBDD8 /* UIView+Frame.m */,
 				6A1B07C5278FF5B400499575 /* Main.storyboard */,
 				6A1B07C8278FF5B700499575 /* Assets.xcassets */,
 				6A1B07CA278FF5B700499575 /* LaunchScreen.storyboard */,
@@ -149,6 +156,7 @@
 				6A1B07C4278FF5B400499575 /* ViewController.m in Sources */,
 				6A1B07BE278FF5B400499575 /* AppDelegate.m in Sources */,
 				6A1B07CF278FF5B700499575 /* main.m in Sources */,
+				6AA07B2F28A3AF65000EBDD8 /* UIView+Frame.m in Sources */,
 				6A1B07C1278FF5B400499575 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
