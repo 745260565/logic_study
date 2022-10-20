@@ -589,30 +589,5 @@ public class Solution {
         return putNodet.next
     }
     
-    func oddEvenList2(_ head: ListNode?) -> ListNode? {
-        if head == nil || head?.next == nil || head?.next?.next == nil {
-            return head
-        }
-        let jishu = ListNode(-1,nil)
-        let oshu = ListNode(-1,nil)
-        var curr1 = jishu
-        var curr2 = oshu
-        var isJiShu : Bool = true
-        var temp = head
-        while temp != nil {
-            if isJiShu {
-                curr1.next = ListNode(temp!.val,nil)
-                curr1 = curr1.next!
-            } else {
-                curr2.next = ListNode(temp!.val,nil)
-                curr2 = curr2.next!
-            }
-            temp = temp?.next
-            isJiShu.toggle()
-        }
-        curr1.next = oshu.next
-        return jishu.next
-    }
-    
 }
 

@@ -227,21 +227,5 @@ class Solution {
         }
         return Int(r%1000000007)
     }
-    
-    func maxProfit5(_ prices: [Int]) -> Int {
-        let n = prices.count
-        var dp : [[Int]] = [[Int]](repeating: [Int](repeating: 0, count: 3), count: n)
-        dp[0][0] = 0 //手中没有股票，不处于冷冻期
-        dp[0][1] = -prices[0] //手中有股票
-        dp[0][2] = 0 // 手中没有股票，处于冷冻期
-        var i = 1
-        while i < n {
-            dp[i][0] = max(dp[i-1][0],dp[i-1][2]) //第i天手中没有股票，且不处于冷冻期
-            dp[i][1] = max(dp[i-1][0]-prices[i],dp[i-1][1]) //第i天手中有股票
-            dp[i][2] = dp[i-1][1] + prices[i] //第i天手中没有股票，且处于冷冻期
-            i += 1
-        }
-        return max(dp[i-1][0],dp[i-1][2])
-    }
 }
 

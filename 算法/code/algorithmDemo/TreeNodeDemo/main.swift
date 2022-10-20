@@ -221,39 +221,34 @@ public class Solution {
     //BM27 按之字形顺序打印二叉树
     //https://www.nowcoder.com/practice/91b69814117f4e8097390d107d2efbe0?tpId=295&tqId=23454&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
     //思路：把层序遍历的偶数层反转即可
-    func Print ( _ pRoot: TreeNode?) -> [[Int]] {
-        // write code here
-        var res = [[Int]]()
-        if pRoot == nil {
-            return res
-        }
-        var queue = [pRoot!] //定义一个TreeNode队列，后续就操作这个队列
-        var i = 1
-        while !queue.isEmpty { //TreeNode不为空就遍历，queue中先有一个TreeNode就是root,第2次就两个，第3次4个,依次类推，同时res中一层层地输出
-            let r = getNodes(queue)
-            res.append((i%2 == 1) ? r.vals : rollbackArray(r.vals))
-            queue = r.nodes
-            i += 1
-        }
-        return res
+//    func Print ( _ pRoot: TreeNode?) -> [[Int]] {
+//        // write code here
+//        var res = [[Int]]()
+//        if pRoot == nil {
+//            return res
+//        }
+//        var queue = [pRoot!] //定义一个TreeNode队列，后续就操作这个队列
+//        var i = 1
+//        while !queue.isEmpty { //TreeNode不为空就遍历，queue中先有一个TreeNode就是root,第2次就两个，第3次4个,依次类推，同时res中一层层地输出
+//            let r = getNodes(queue)
+//            res.append((i%2 == 1) ? r.vals : rollbackArray(r.vals))
+//            queue = r.nodes
+//            i += 1
+//        }
+//        return res
+//    }
+    
+    func isSymmetric(_ root: TreeNode?) -> Bool {
+        return check(left: root?.left, right: root?.right)
     }
     
-    func rollbackArray (_ array: [Int]) -> [Int] {
-        if array.count == 0 || array.count == 1 {
-            return array
+    func check(left: TreeNode?, right: TreeNode?) -> Bool {
+        if left == nil && right == nil {
+            return true
         }
-        var res: [Int] = [Int]()
-        var temp = array
-        while temp.count != 0 {
-            res.append(temp.popLast()!)
+        if left == nil || right == nil {
+            return false
         }
-        return res
-    }
-    
-    func invertTree(_ root: TreeNode?) -> TreeNode? {
-        if root == nil {
-            return nil
-        }
-        return TreeNode(root!.val, invertTree(root!.right), invertTree(root!.left))
+        return (left!.val == right!.val) && check(left: left!.left, right: right!.right) && check(left: left!.right, right: right!.left)
     }
 }
